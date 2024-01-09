@@ -1,0 +1,22 @@
+footer{
+    background-color: black;
+}
+
+#footer-texts{
+    font-family: 'Roboto', sans-serif;
+
+    display: flex;
+    justify-content: space-around;
+
+    padding-bottom: 20px; 
+}
+
+.footer-section{
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section a{
+    color: white;
+}

@@ -1,0 +1,22 @@
+@font-face {
+    font-family: "Bird";
+    src: url("../fonts/BirdsOfParadisePersonalUseOnly-dX7X.ttf");
+}
+
+@font-face {
+    font-family: "Open-Sans";
+    font-weight: 400px;
+    src: url("../fonts/OpenSans-Semibold.ttf") format("opentype"),
+         url("../fonts/OpenSans-Light.ttf") format("truetype"),
+         url("../fonts/OpenSans-Bold.ttf") format("opentype"),
+         url("../fonts/OpenSans.ttf") format("truetype");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lexend Zetta";
+    src: url("../fonts/LexendZetta-Regular.ttf") format("truetype");
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+

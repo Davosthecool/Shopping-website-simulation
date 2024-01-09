@@ -1,0 +1,137 @@
+body{
+    background-color: #f2f2f2;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+header{ /* à supprimer */
+    width: 100%;
+    height: 150px;
+    background-color: bisque;
+}
+
+/* Main */
+
+main{
+    padding-top: 60px;
+    padding-bottom: 100px;
+}
+
+.principale{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 100px;
+}
+
+.produit-options{
+    display: flex;
+    padding: 40px 60px 40px 60px;
+    width: 20em;
+    background-color: white;
+    height: fit-content;
+    border-radius: 8px;
+}
+
+.form-options{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.produit-images{
+    border-radius: 6px;
+    width: 650px;
+    height: 670px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.produit-images img{
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.informations{
+    display: grid;
+    gap: 5px;
+}
+
+.type-vetement{
+    text-align: justify;
+    font-size: 18px;
+}
+
+.marque-vetement{
+    font-size: 20px;
+    text-decoration: none;
+    line-height: 1.5;
+    margin-bottom: 0.5em;
+    text-decoration-skip-ink: auto; 
+    color: black;
+}
+
+.marque-vetement:hover{
+    text-decoration: underline;
+}
+/* Select */
+
+.option-select, .option-select *{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.option-select{
+    width: 100%;
+    background-color: #e6e6e6;
+    border-radius: 4px;
+}
+
+.option-select select{
+    font-size: 1rem;
+    font-weight: normal;
+    width: 100%;
+    padding: 8px 24px 8px 10px;
+    border: none;
+    background-color: transparent;
+
+}
+
+.option-select select:active, .option-select select:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+
+
+
+/* Button */
+
+.ajouter{
+    padding: 15px;
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: #3563e9;
+}
+
+.ajouter:focus{
+    background-color: #1b1bfd;
+}
+
+.ajouter:hover{
+    background-color: #436ef8;
+}
