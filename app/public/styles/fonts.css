@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Bird";
-    src: url("../fonts/BirdsOfParadisePersonalUseOnly-dX7X.ttf");
+    src: url("../fonts/BirdsOfParadise.ttf");
 }
 
 @font-face {
@@ -16,6 +16,14 @@
 @font-face {
     font-family: "Lexend Zetta";
     src: url("../fonts/LexendZetta-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600; /* Semi-Bold */
+    src: url('../fonts/Inter/Inter-SemiBold.woff2') format('woff2'),
+         url('../fonts/Inter/Inter-SemiBold.woff') format('woff');
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');

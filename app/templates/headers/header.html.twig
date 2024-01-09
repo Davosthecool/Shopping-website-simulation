@@ -1,3 +1,51 @@
+{% block stylesheets%}
+<link rel="stylesheet" href="styles/header.css" type="text/css"> 
+{% endblock %}
+{% block header %}
 <header>
-header
+    <div class="header header_classique">
+        <div id="header_top">
+            <div class="bloc">
+                
+            </div>
+            <div class="bloc">
+                <h1 id="titre">
+                    <span>F</span>
+                    <span>low</span>
+                </h1>
+            </div>
+            <div class="bloc" id="icones">
+                <a href=""><img src="icones/profil.png" alt="icone profil"></a>
+                <a href=""><img src="icones/favoris.png" alt="icone favoris"></a>
+                <a href=""><img src="icones/panier.png" alt="icone panier"></a>
+            </div>
+        </div>
+
+        <div id="header_bot">
+            <div id="categories">
+                <div id="barre">
+                    <a href="" target="_blank" rel="noopener noreferrer">Ensembles</a>
+                </div>
+                <div id="barre">
+                    <a href="" target="_blank" rel="noopener noreferrer">Femmes</a>
+                </div>
+                <div id="barre">
+                    <a href="" target="_blank" rel="noopener noreferrer">Hommes</a>
+                </div>
+                <div id="barre">
+                    <a href="" target="_blank" rel="noopener noreferrer">Enfants</a>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <input type="text" name="" class="search-txt" placeholder="Tapez pour rechercher" />
+                <a class="search-btn" href="src/images/icones/rechercher.png">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+              </div>
+
+        </div>
+        
+    </div>
 </header>
+{% endblock %}

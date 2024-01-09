@@ -17,4 +17,8 @@
         <li>Your template at <code><a href="{{ '/var/home/E212269C/eq_02_03_ahamada-ibrahim_chocho-david_fremont-tom_mary-bastian/app/templates/test/index.html.twig'|file_link(0) }}">templates/test/index.html.twig</a></code></li>
     </ul>
 </div>
+
+{% for user in list_users %}
+{{ user.username }}
+{% endfor %}
 {% endblock %}
