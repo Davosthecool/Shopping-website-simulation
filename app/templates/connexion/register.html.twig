@@ -35,16 +35,12 @@
                     </div>
                     
                     <div class="choose">
-                        <div>
-                            <input type="radio" name="Sexe" id="Homme" value="Homme" checked="">
-                        <label for="Homme">Monsieur</label>
-                        </div>
-                        
-                        <div>
-                            <input type="radio" name="Sexe" id="Femme" value="Femme">
-                            <label for="Femme">Madame</label>
-                        </div>
-                        
+                        {% for choice in registrationForm.sexe %}
+                            <div>
+                                {{ form_widget(choice) }}
+                                {{ form_label(choice) }}
+                            </div>
+                        {% endfor %}
                     </div>
                     <div class="champ">
                         {{ form_widget(registrationForm.nom, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}
