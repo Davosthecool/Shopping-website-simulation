@@ -6,34 +6,49 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
-class User
+#[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Profil $profil = null;
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $username = null;
+
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
     #[ORM\ManyToMany(targetEntity: Article::class)]
     private Collection $favoris;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Panier $panier = null;
 
-    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class)]
     private Collection $historique;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: PayCard::class, orphanRemoval: true)]
+    private Collection $paycards;
 
     public function __construct()
     {
         $this->favoris = new ArrayCollection();
         $this->historique = new ArrayCollection();
+        $this->paycards = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -41,16 +56,69 @@ class User
         return $this->id;
     }
 
-    public function getProfil(): ?Profil
+    public function getUsername(): ?string
     {
-        return $this->profil;
+        return $this->username;
     }
 
-    public function setProfil(Profil $profil): static
+    public function setUsername(string $username): static
     {
-        $this->profil = $profil;
+        $this->username = $username;
 
         return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->username;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     /**
@@ -101,7 +169,7 @@ class User
     {
         if (!$this->historique->contains($historique)) {
             $this->historique->add($historique);
-            $historique->setUtilisateur($this);
+            $historique->setUser($this);
         }
 
         return $this;
@@ -111,8 +179,38 @@ class User
     {
         if ($this->historique->removeElement($historique)) {
             // set the owning side to null (unless already changed)
-            if ($historique->getUtilisateur() === $this) {
-                $historique->setUtilisateur(null);
+            if ($historique->getUser() === $this) {
+                $historique->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PayCard>
+     */
+    public function getPaycards(): Collection
+    {
+        return $this->paycards;
+    }
+
+    public function addPaycard(PayCard $paycard): static
+    {
+        if (!$this->paycards->contains($paycard)) {
+            $this->paycards->add($paycard);
+            $paycard->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaycard(PayCard $paycard): static
+    {
+        if ($this->paycards->removeElement($paycard)) {
+            // set the owning side to null (unless already changed)
+            if ($paycard->getUser() === $this) {
+                $paycard->setUser(null);
             }
         }
 

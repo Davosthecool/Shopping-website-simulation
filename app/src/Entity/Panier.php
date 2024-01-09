@@ -13,16 +13,20 @@ class Panier
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    protected ?int $id = null;
+
+    #[ORM\ManyToOne(inversedBy: 'panier')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $utilisateur = null;
 
     #[ORM\Column]
-    private ?int $nb_articles = null;
+    protected ?int $nb_articles = null;
 
     #[ORM\Column]
-    private ?float $prix_total = null;
+    protected ?float $prix_total = null;
 
     #[ORM\ManyToMany(targetEntity: Exemplaire::class)]
-    private Collection $contenu;
+    protected Collection $contenu;
 
     public function __construct()
     {
@@ -34,6 +38,18 @@ class Panier
         return $this->id;
     }
 
+    public function getUtilisateur(): ?User
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?User $utilisateur): static
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+    
     public function getNbArticles(): ?int
     {
         return $this->nb_articles;

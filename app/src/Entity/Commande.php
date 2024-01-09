@@ -13,12 +13,8 @@ enum Statut {
 }
 
 #[ORM\Entity(repositoryClass: CommandeRepository::class)]
-class Commande
+class Commande extends Panier
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_commande = null;
@@ -29,17 +25,12 @@ class Commande
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_arrivee = null;
 
-    #[ORM\Column(type: Types::OBJECT)]
-    private Statut $statut = Statut::EN_COURS;
+    #[ORM\Column]
+    private ?string $statut = null;
 
     #[ORM\ManyToOne(inversedBy: 'historique')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $utilisateur = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    private ?User $user = null;
 
     public function getDateCommande(): ?\DateTimeInterface
     {
@@ -89,14 +80,14 @@ class Commande
         return $this;
     }
 
-    public function getUtilisateur(): ?User
+    public function getUser(): ?User
     {
-        return $this->utilisateur;
+        return $this->user;
     }
 
-    public function setUtilisateur(?User $utilisateur): static
+    public function setUser(?User $user): static
     {
-        $this->utilisateur = $utilisateur;
+        $this->user = $user;
 
         return $this;
     }

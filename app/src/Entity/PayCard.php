@@ -23,6 +23,10 @@ class PayCard
     #[ORM\Column]
     private ?int $cvc = null;
 
+    #[ORM\ManyToOne(inversedBy: 'paycards')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -67,6 +71,18 @@ class PayCard
     public function setCvc(int $cvc): static
     {
         $this->cvc = $cvc;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

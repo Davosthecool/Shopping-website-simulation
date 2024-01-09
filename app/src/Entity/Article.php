@@ -8,16 +8,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-enum Tag {
-}
-
-enum Sexe{
-}
-
-enum Categorie{
-}
-
-
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
 {
@@ -41,9 +31,9 @@ class Article
     #[ORM\Column(type: Types::ARRAY)]
     private array $tags = []; #Tag
 
-    private ?Sexe $sexe = null;
+    private ?string $sexe = null;
 
-    private ?Categorie $categorie = null;
+    private ?string $categorie = null;
 
     #[ORM\OneToMany(mappedBy: 'type', targetEntity: Exemplaire::class, orphanRemoval: true)]
     private Collection $exemplaires;
