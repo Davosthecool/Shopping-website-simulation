@@ -2,24 +2,72 @@
 
 {% block title %}Register{% endblock %}
 
+{% block stylesheets %} 
+<link rel="stylesheet" href="styles/login.css" type="text/css">
+{% endblock %}
+
+
 {% block header %}
 {% include asset('headers/simple_header.html.twig') %}
 {% endblock %}
 
 {% block content %}
-    <h1>Register</h1>
 
-    {{ form_errors(registrationForm) }}
+    {# {{ form_row(registrationForm.plainPassword, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}  {{ form_label(registrationForm.plainPassword) }}#}
+    <main>
+        <div class="principale">
+            <button id="retour" class="retour">
+                <i class="icon-angle-left"></i>
+                <span>Retour</span>
+            </button>
+            <div class="principale-texte">
+                <p class="title">Connexion</p>
+                <p class="subtitle">Saississez votre mot de passe pour vous connecter</p>
+            </div>
+            <div class="principale-form">
+                {{ form_errors(registrationForm) }}
+                {{ form_start(registrationForm, {'attr' : {'class' : 'main-form'} }) }}
+                    <div class="email-edit">
+                        <a href="">
+                            <p>ahamadaibrahim@gmail.com</p>
+                            <i class="icon-pencil"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="choose">
+                        <div>
+                            <input type="radio" name="Sexe" id="Homme" value="Homme" checked="">
+                        <label for="Homme">Monsieur</label>
+                        </div>
+                        
+                        <div>
+                            <input type="radio" name="Sexe" id="Femme" value="Femme">
+                            <label for="Femme">Madame</label>
+                        </div>
+                        
+                    </div>
+                    <div class="champ">
+                        {{ form_widget(registrationForm.nom, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}
+                        <label for="nom" class="input_label">Nom</label>
+                    </div>
+                    <div class="champ">
+                        {{ form_widget(registrationForm.prenom, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}
+                        <label for="prenom" class="input_label">Prénom</label>
+                    </div>
+                    <div class="champ">
+                        {{ form_widget(registrationForm.password.first, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}
+                        <label for="password1" class="input_label">Mot de passe</label>
+                    </div>
+                    <div class="champ">
+                        {{ form_widget(registrationForm.password.second, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}
+                        <label for="password2" class="input_label">Confirmer mot de passe</label>
+                    </div>
+                    <input type="submit" class="envoyer" id="envoyer" value="S'inscrire">                    
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </main>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
 {% endblock %}
 
 {% block footer %} {% endblock %}

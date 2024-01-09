@@ -33,7 +33,7 @@
                             <i class="icon-pencil"></i>
                         </a>
                     </div>
-                    <!--- checkbox Homme Femme --->
+                    
                     <div class="choose">
                         <div>
                             <input type="radio" name="Sexe" id="Homme" value="Homme" checked="">
@@ -62,20 +62,7 @@
                         <input type="password" id="password2" name="password" class="input_login" placeholder="" required autocomplete="off">
                         <label for="password2" class="input_label">Confirmer mot de passe</label>
                     </div>
-                    <input type="submit" class="envoyer" id="envoyer" value="S'inscrire">
-                    <script>
-                        var password1 = document.getElementById("password1");
-                        var password2 = document.getElementById("password2");
-                        var sendButton = document.getElementById("envoyer");
-                        password2.addEventListener("input", function(){
-                            if (password1.value != password2.value){
-                                sendButton.disabled = true;
-                            }else{
-                                sendButton.disabled = false;
-                            }
-                        });
-                    </script>
-                    
+                    <input type="submit" class="envoyer" id="envoyer" value="S'inscrire">                    
                 </form>
             </div>
         </div>
