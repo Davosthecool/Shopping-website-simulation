@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240109165758 extends AbstractMigration
+final class Version20240110154439 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,7 +20,7 @@ final class Version20240109165758 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE article (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) DEFAULT NULL, prix DOUBLE PRECISION DEFAULT NULL, tailles LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', couleurs LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', tags LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE article (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) DEFAULT NULL, prix DOUBLE PRECISION DEFAULT NULL, tailles LONGTEXT NOT NULL COMMENT \'(DC2Type:simple_array)\', couleurs LONGTEXT NOT NULL COMMENT \'(DC2Type:simple_array)\', tags LONGTEXT NOT NULL COMMENT \'(DC2Type:simple_array)\', marque VARCHAR(255) DEFAULT NULL, stock INT NOT NULL, image VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE commande (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, nb_articles INT NOT NULL, prix_total DOUBLE PRECISION NOT NULL, date_commande DATE DEFAULT NULL, date_envoi DATE DEFAULT NULL, date_arrivee DATE DEFAULT NULL, statut VARCHAR(255) NOT NULL, INDEX IDX_6EEAA67DA76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE exemplaire (id INT AUTO_INCREMENT NOT NULL, type_id INT NOT NULL, taille INT NOT NULL, couleur VARCHAR(255) NOT NULL, INDEX IDX_5EF83C92C54C8C93 (type_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE panier (id INT AUTO_INCREMENT NOT NULL, utilisateur_id INT NOT NULL, nb_articles INT NOT NULL, prix_total DOUBLE PRECISION NOT NULL, INDEX IDX_24CC0DF2FB88E14F (utilisateur_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
