@@ -3,9 +3,11 @@
 {% block title %}Register{% endblock %}
 
 {% block stylesheets %} 
-<link rel="stylesheet" href="styles/login.css" type="text/css">
+    <link rel="stylesheet" href="styles/login.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 {% endblock %}
 
+{% set email = app.session.get('email') %}
 
 {% block header %}
 {% include asset('headers/simple_header.html.twig') %}
@@ -16,7 +18,7 @@
     {# {{ form_row(registrationForm.plainPassword, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}  {{ form_label(registrationForm.plainPassword) }}#}
     <main>
         <div class="principale">
-            <button id="retour" class="retour">
+            <button id="retour" class="retour" onclick="history.back()">
                 <i class="icon-angle-left"></i>
                 <span>Retour</span>
             </button>
@@ -28,8 +30,8 @@
                 {{ form_errors(registrationForm) }}
                 {{ form_start(registrationForm, {'attr' : {'class' : 'main-form'} }) }}
                     <div class="email-edit">
-                        <a href="">
-                            <p>ahamadaibrahim@gmail.com</p>
+                        <a href="" onclick="history.back()">
+                            <p>{{ email }}</p>
                             <i class="icon-pencil"></i>
                         </a>
                     </div>
@@ -43,27 +45,45 @@
                         {% endfor %}
                     </div>
                     <div class="champ">
-                        {{ form_widget(registrationForm.nom, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}
+                        {{ form_widget(registrationForm.nom, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off'} }) }}
                         <label for="nom" class="input_label">Nom</label>
                     </div>
                     <div class="champ">
-                        {{ form_widget(registrationForm.prenom, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}
+                        {{ form_widget(registrationForm.prenom, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off'} }) }}
                         <label for="prenom" class="input_label">Prénom</label>
                     </div>
                     <div class="champ">
-                        {{ form_widget(registrationForm.password.first, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}
+                        {{ form_widget(registrationForm.password.first, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off'} }) }}
                         <label for="password1" class="input_label">Mot de passe</label>
                     </div>
                     <div class="champ">
-                        {{ form_widget(registrationForm.password.second, {'attr' : {'class' : 'input_login', 'placeholder' : ''} }) }}
+                        {{ form_widget(registrationForm.password.second, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off'} }) }}
                         <label for="password2" class="input_label">Confirmer mot de passe</label>
                     </div>
-                    <input type="submit" class="envoyer" id="envoyer" value="S'inscrire">                    
+                    {{ form_widget(registrationForm.submit, {'attr' : {'class' : 'envoyer', 'id' : 'envoyer', 'value' : "S'inscrire"} }) }}
+
                 {{ form_end(registrationForm) }}
             </div>
         </div>
     </main>
-
 {% endblock %}
 
 {% block footer %} {% endblock %}
+
+{% block scripts %}
+<script>
+    function afficherBoiteDialogue(type, message) {
+        Swal.fire({
+            icon: type,
+            title: type.charAt(0).toUpperCase() + type.slice(1),
+            text: message,
+        })
+    }
+
+    {% for type, flashMessages in app.session.flashBag.all() %}
+        {% for flashMessage in flashMessages %}
+            afficherBoiteDialogue('{{ type }}', '{{ flashMessage|e('js') }}')
+        {% endfor %}
+    {% endfor %}
+</script>
+{% endblock %}

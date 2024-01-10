@@ -6,11 +6,6 @@ use App\Repository\CommandeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-enum Statut {
-    case EN_COURS;
-    case LIVRE;
-    case EN_ATTENTE;
-}
 
 #[ORM\Entity(repositoryClass: CommandeRepository::class)]
 class Commande extends Panier

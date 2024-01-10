@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %} 
+{% block stylesheets %}
     <link rel="stylesheet" href="styles/login.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 {% endblock %}
@@ -9,32 +9,20 @@
 {% include asset('headers/simple_header.html.twig') %}
 {% endblock %}
 
-{% set email = app.session.get('email') %}
-
 {% block content%}
     <main>
         <div class="principale">
-            <button id="retour" class="retour" onclick="history.back()">
-                <i class="icon-angle-left"></i>
-                <span>Retour</span>
-            </button>
             <div class="principale-texte">
-                <p class="title">Connexion</p>
-                <p class="subtitle">Saississez votre mot de passe pour vous connecter</p>
+                <p class="title">Connexion/Inscription</p>
+                <p class="subtitle">Saississez votre e-mail pour vous connecter ou créer un compte</p>
             </div>
             <div class="principale-form">
-                <form action="" method="post" class="main-form">
-                    <div class="email-edit">
-                        <a href="">
-                            <p>{{ email }}</p>
-                            <i class="icon-pencil"></i>
-                        </a>
-                    </div>
+                <form action="{{ path("app_authenticate") }}" method="post" class="main-form">
                     <div class="champ">
-                        <input type="password" id="form_p" name="password" class="input_login" placeholder="" required>
-                        <label for="password" class="input_label">Mot de passe</label>
+                        <input type="email" id="email" name="email" class="input_login" placeholder="" required>
+                        <label for="email" class="input_label">E-mail</label>
                     </div>
-                    <input type="submit" class="envoyer" value="Se connecter">
+                    <input type="submit" class="envoyer" value="Se connecter / S'inscrire">
                 </form>
             </div>
         </div>
@@ -59,6 +47,5 @@
         afficherBoiteDialogue('{{ type }}', '{{ flashMessage|e('js') }}')
         {% endfor %}
         {% endfor %}
-
     </script>
 {% endblock %}
