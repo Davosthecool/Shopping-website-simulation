@@ -35,8 +35,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $favoris;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Panier $panier = null;
+    #[ORM\JoinColumn(nullable: false)]
+    private Panier $panier;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class)]
     private Collection $historique;
@@ -55,6 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
+        $this->panier = new Panier();
         $this->favoris = new ArrayCollection();
         $this->historique = new ArrayCollection();
         $this->paycards = new ArrayCollection();

@@ -20,10 +20,10 @@ class Panier
     private ?User $utilisateur = null;
 
     #[ORM\Column]
-    protected ?int $nb_articles = null;
+    protected ?int $nb_articles = 0;
 
     #[ORM\Column]
-    protected ?float $prix_total = null;
+    protected ?float $prix_total = 0;
 
     #[ORM\ManyToMany(targetEntity: Exemplaire::class)]
     protected Collection $contenu;

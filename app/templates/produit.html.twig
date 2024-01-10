@@ -13,7 +13,8 @@
                 <img src= "{{ asset('images/' ~ produit.image) }}" alt= "{{produit.image}}">
             </div>
             <div class="produit-options">
-                <form action="" method="post" class="form-options">
+                    {{ form_errors(addproduitForm) }}
+                    {{ form_start(addproduitForm, {'attr' : {'class' : 'form-options'} }) }}
                     <div class="informations">
                         <a href=""  class="marque-vetement">{{produit.marque}}</a>
                         <p class="type-vetement">{{produit.nom}}</p>
@@ -22,27 +23,17 @@
                     <div class="taille-option">
                         <label for="taille">Taille</label>
                         <div class="option-select">
-                            <select name="Taille" id="taille" required>
-                                <option value="" disabled selected>Choississez votre taille</option>
-                                {% for taille in produit.tailles %}
-                                    <option value="{{taille}}">{{taille}}</option>
-                                {% endfor %}
-                            </select>
+                            {{ form_widget(addproduitForm.taille, {'attr' : {'name' : 'taille', 'id' : 'taille'}} ) }}
                         </div>
                     </div>
                     <div class="couleur-option">
                         <label for="couleur">Couleur</label>
                         <div class="option-select">
-                            <select name="couleur" id="couleur" required>
-                                <option value="" disabled selected>Choississez votre couleur</option>
-                                {% for couleur in produit.couleurs %}
-                                    <option value="{{couleur}}">{{couleur}}</option>
-                                {% endfor %}
-                            </select>
+                            {{ form_widget(addproduitForm.couleur, {'attr' : {'name' : 'couleur', 'id' : 'couleur'}} ) }}
                         </div>
                     </div>
-                    <button type="submit" class="ajouter">Ajouter au panier</button>
-                </form>
+                    {{ form_widget(addproduitForm.submit, {'attr' : {'class' : 'ajouter'} }) }}
+                {{ form_end(addproduitForm) }}
             </div>
         </div>
         </div>
