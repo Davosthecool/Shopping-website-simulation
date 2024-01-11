@@ -34,9 +34,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Article::class)]
     private Collection $favoris;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private Panier $panier;
+    // #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private Panier $panier;
+
+    #[ORM\OneToOne(mappedBy: 'utilisateur', cascade: ['persist', 'remove'])]
+    private ?Panier $panier;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class)]
     private Collection $historique;
@@ -55,7 +58,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->panier = new Panier();
+        $this->setPanier(new Panier);
         $this->favoris = new ArrayCollection();
         $this->historique = new ArrayCollection();
         $this->paycards = new ArrayCollection();
@@ -162,6 +165,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPanier(Panier $panier): static
     {
+        // set the owning side of the relation if necessary
+        if ($panier->getUtilisateur() !== $this) {
+            $panier->setUtilisateur($this);
+        }
+
         $this->panier = $panier;
 
         return $this;

@@ -23,6 +23,9 @@ class Exemplaire
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $type = null;
 
+    #[ORM\Column]
+    private ?int $quantite = 1;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,32 @@ class Exemplaire
     public function setType(?Article $type): static
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(int $quantite): static
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function addQuantite(int $quantite = 1): static
+    {
+        $this->quantite += $quantite;
+
+        return $this;
+    }
+
+    public function removeQuantite(int $quantite = 1): static
+    {
+        $this->quantite -= $quantite;
 
         return $this;
     }

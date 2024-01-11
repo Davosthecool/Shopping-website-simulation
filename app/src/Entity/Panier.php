@@ -15,7 +15,7 @@ class Panier
     #[ORM\Column]
     protected ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'panier')]
+    #[ORM\OneToOne(inversedBy: 'panier', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $utilisateur = null;
 
@@ -43,7 +43,7 @@ class Panier
         return $this->utilisateur;
     }
 
-    public function setUtilisateur(?User $utilisateur): static
+    public function setUtilisateur(User $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
 
@@ -86,7 +86,11 @@ class Panier
     {
         if (!$this->contenu->contains($contenu)) {
             $this->contenu->add($contenu);
+        }else{
+            $this->contenu->get($this->contenu->indexOf($contenu))->addQuantite();
         }
+        $this->setNbArticles($this->getNbArticles()+1);
+        $this->setPrixTotal($this->getPrixTotal()+$contenu->getType()->getPrix());
 
         return $this;
     }
@@ -97,4 +101,5 @@ class Panier
 
         return $this;
     }
+
 }

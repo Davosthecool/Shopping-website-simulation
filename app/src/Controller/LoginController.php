@@ -27,7 +27,7 @@ class LoginController extends AbstractController
             $utilisateur = $userRepository->findOneBy(['email' => $session->get('email')]);
             if ($userPasswordHasher->isPasswordValid($utilisateur, $motDePasse)){
                 $session->set("permission", true);
-                return $this->redirectToRoute("app_test");
+                return $this->redirectToRoute("app_produit");
             }else{
                 $this->addFlash("error","Mot de passe incorrecte");
                 return $this->render('connexion/login.html.twig', [

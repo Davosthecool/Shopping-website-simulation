@@ -6,6 +6,7 @@ use App\Form\AddProduitType;
 use App\Repository\ArticleRepository;
 use App\Repository\ExemplaireRepository;
 use App\Repository\PanierRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,9 +17,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProduitController extends AbstractController
 {
     #[Route('/produit', name: 'app_produit')]
-    public function index(ArticleRepository $Arep, ExemplaireRepository $Erep, PanierRepository $Prep, Request $request, EntityManagerInterface $entityManager): Response
+    public function index(ArticleRepository $Arep, ExemplaireRepository $Erep, UserRepository $Urep, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $produit = $Arep->find(2);
+        $produit = $Arep->find(1);
 
         $exemplaire = new Exemplaire();
         $form = $this->createForm(AddProduitType::class, $exemplaire);
@@ -26,15 +27,26 @@ class ProduitController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $session = $request->getSession();
+
             $exemplaire = $form->getData();
-            $exemplaire->setType($produit);
+            $exemplaire->setType($produit);// probleme de dulication d'exemplaires dans bdd
             $entityManager->persist($exemplaire);//pour l'instant on cree un exemplaire
             $entityManager->flush();//le but est d'avoir des esemplaires et de se baser sur le stock
             // pour afficher les tailles/couleurs possibles puis de les retirer du stock quand ils sont achetes
             //doit rajouter le fait de mettre dans le panier
             $exemplaire = $Erep->findOneBy(['taille' => $form->get('taille')->getData(), 'couleur' => $form->get('couleur')->getData()]);
 
-            return $this->redirectToRoute('app_register');
+            $panier = $Urep->findOneBy(['email' => $session->get('email')])->getPanier();
+            $panier->addContenu($exemplaire);
+
+            $entityManager->persist($panier);
+            $entityManager->flush();
+
+            return $this->render('produit.html.twig', [
+                'produit' => $produit,
+                'addproduitForm' => $form->createView(),
+            ]);
         }
         return $this->render('produit.html.twig', [
             'produit' => $produit,
