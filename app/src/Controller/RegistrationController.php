@@ -4,25 +4,23 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Security\UsersAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager,
+                             UserAuthenticatorInterface $userAuthenticator, UsersAuthenticator $authenticator): Response
     {
-        $session = $request->getSession();
-
-        if (!$session->has("email") || $session->get("email") == null)
-            $this->redirectToRoute("app_authenticate");
-        if ($session->get("permission"))
-            $this->redirectToRoute("app_test"); //à modifier
-
+        if ($this->getUser())
+            return $this->redirectToRoute('app_test');
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -36,22 +34,23 @@ class RegistrationController extends AbstractController
                     'registrationForm' => $form->createView(),
                 ]);
             }
-            $user->setEmail($session->get("email"));
             $user->setRoles(array("user"));
-            // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('password')->getData()
                 )
             );
-            $this->verifierChamps($user);
 
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_produit');
+            return $userAuthenticator->authenticateUser(
+                $user,
+                $authenticator,
+                $request
+            );
         }
         return $this->render('connexion/register.html.twig', [
             'registrationForm' => $form->createView(),
