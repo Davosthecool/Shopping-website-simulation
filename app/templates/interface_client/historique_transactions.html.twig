@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %} Historique transactions {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="styles/infos_perso.css" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/footer.css') }}">
+    <div class="contenu">
+        <div class="leftside">
+            <div class="lefts">
+                <a href="/infos_perso"> <div class="not_select"> Mes infos perso </div> </a>
+                <a href="/historique_transactions"> <div class="select"> Historique transactions </div> </a>
+                <a href="/bons_d'achat"> <div class="not_select"> Bons d'achat </div> </a>
+                <a href="/support_client"> <div class="not_select"> Support client </div> </a>
+            </div>
+        </div>
+        <div class="rightside">
+            <ul>
+                <div class="ht_head">
+                    <div class="ht_data">
+                        <div class="ht_transac_id"> Commande#012345 </div>
+                        <div class="ht_date"> 01/12/2023 </div>
+                    </div>
+                    <div class="ht_foot">
+                        <div class="ht_fdp"> Frais de port : 4.99€</div>
+                        <div class="ht_prix"> Prix total : 564.97€ </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+{% endblock content %}
