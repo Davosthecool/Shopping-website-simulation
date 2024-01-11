@@ -25,13 +25,8 @@ class Panier
     #[ORM\Column]
     protected ?float $prix_total = 0;
 
-    #[ORM\ManyToMany(targetEntity: Exemplaire::class)]
-    protected Collection $contenu;
-
-    public function __construct()
-    {
-        $this->contenu = new ArrayCollection();
-    }
+    #[ORM\OneToMany(mappedBy: 'panier', targetEntity: Exemplaire::class)]
+    private Collection $contenu;
 
     public function getId(): ?int
     {
@@ -62,6 +57,20 @@ class Panier
         return $this;
     }
 
+    public function addNbArticles(int $nb_articles = 1): static
+    {
+        $this->nb_articles += $nb_articles;
+
+        return $this;
+    }
+
+    public function subNbArticles(int $nb_articles = 1): static
+    {
+        $this->nb_articles -= $nb_articles;
+
+        return $this;
+    }
+
     public function getPrixTotal(): ?float
     {
         return $this->prix_total;
@@ -70,6 +79,20 @@ class Panier
     public function setPrixTotal(float $prix_total): static
     {
         $this->prix_total = $prix_total;
+
+        return $this;
+    }
+
+    public function addPrixTotal(float $prix): static
+    {
+        $this->prix_total += $prix;
+
+        return $this;
+    }
+
+    public function subPrixTotal(float $prix): static
+    {
+        $this->prix_total -= $prix;
 
         return $this;
     }
@@ -84,20 +107,23 @@ class Panier
 
     public function addContenu(Exemplaire $contenu): static
     {
-        if (!$this->contenu->contains($contenu)) {
-            $this->contenu->add($contenu);
-        }else{
-            $this->contenu->get($this->contenu->indexOf($contenu))->addQuantite();
-        }
-        $this->setNbArticles($this->getNbArticles()+1);
-        $this->setPrixTotal($this->getPrixTotal()+$contenu->getType()->getPrix());
-
+        $this->contenu->add($contenu);
+        $contenu->setPanier($this);
+        $this->addPrixTotal($contenu->getType()->getPrix());
+        $this->addNbArticles();
         return $this;
     }
 
     public function removeContenu(Exemplaire $contenu): static
     {
-        $this->contenu->removeElement($contenu);
+        if ($this->contenu->removeElement($contenu)) {
+            // set the owning side to null (unless already changed)
+            if ($contenu->getPanier() === $this) {
+                $contenu->setPanier(null);
+                $this->subPrixTotal($contenu->getType()->getPrix());
+                $this->subNbArticles();
+            }
+        }
 
         return $this;
     }

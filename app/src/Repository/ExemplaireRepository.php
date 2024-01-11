@@ -21,6 +21,15 @@ class ExemplaireRepository extends ServiceEntityRepository
         parent::__construct($registry, Exemplaire::class);
     }
 
+    public function findAllUniqueField(string $field) : array
+    {
+
+        return $this->createQueryBuilder('e')
+            ->select("DISTINCT e.$field")
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Exemplaire[] Returns an array of Exemplaire objects
 //     */

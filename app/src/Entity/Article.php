@@ -154,6 +154,8 @@ class Article
         if (!$this->exemplaires->contains($exemplaire)) {
             $this->exemplaires->add($exemplaire);
             $exemplaire->setType($this);
+        }else{
+            $this->exemplaires->get($this->exemplaires->indexOf($exemplaire))->addQuantite();
         }
 
         return $this;

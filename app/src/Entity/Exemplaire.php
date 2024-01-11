@@ -23,8 +23,8 @@ class Exemplaire
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $type = null;
 
-    #[ORM\Column]
-    private ?int $quantite = 1;
+    #[ORM\ManyToOne(inversedBy: 'contenu')]
+    private ?Panier $panier = null;
 
     public function getId(): ?int
     {
@@ -34,6 +34,26 @@ class Exemplaire
     public function getTaille(): ?int
     {
         return $this->taille;
+    }
+
+    public function getTailleLabel(): ?string
+    {
+        switch ($this->getTaille()) {
+            case 1:
+                return 'XS';
+            case 2:
+                return 'S';
+            case 3:
+                return 'M';
+            case 4:
+                return 'L';
+            case 5:
+                return 'XL';
+                                                
+            default:
+                break;
+        }
+        return '';
     }
 
     public function setTaille(int $taille): static
@@ -67,28 +87,14 @@ class Exemplaire
         return $this;
     }
 
-    public function getQuantite(): ?int
+    public function getPanier(): ?Panier
     {
-        return $this->quantite;
+        return $this->panier;
     }
 
-    public function setQuantite(int $quantite): static
+    public function setPanier(?Panier $panier): static
     {
-        $this->quantite = $quantite;
-
-        return $this;
-    }
-
-    public function addQuantite(int $quantite = 1): static
-    {
-        $this->quantite += $quantite;
-
-        return $this;
-    }
-
-    public function removeQuantite(int $quantite = 1): static
-    {
-        $this->quantite -= $quantite;
+        $this->panier = $panier;
 
         return $this;
     }
