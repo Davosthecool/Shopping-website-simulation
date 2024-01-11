@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="styles/infos_perso.css" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="contenu">
+    <div class="leftside">
+        <div class="lefts">
+            <a href="/"> <div class="select"> Mes infos perso </div> </a>
+            <a href="/historique_transactions"> <div class="not_select"> Historique transactions </div> </a>
+            <a href="/bons_d'achat"> <div class="not_select"> Bons d'achat </div> </a>
+            <a href="/support_client"> <div class="not_select"> Support client </div> </a>
+        </div>
+    </div>
+    <div class="rightside">
+            <div class="titre_categorie"> Mes infos perso </div>
+            <div class="champ">
+                <input type="text" name="mail" class="infodata" placeholder="" value="dupond.example@gmail.com"/>
+                <label for="mail" class="infolabel">Adresse Mail</label>
+            </div>
+            <div class="champ">
+                <input type="text" name="nom" class="infodata" placeholder="" value="Dupond"/>
+                <label for="nom" class="infolabel">Nom</label>
+            </div>
+            <div class="champ">
+                <input type="text" name="prenom" class="infodata" placeholder="" value="Example"/>
+                <label for="prenom" class="infolabel">Prénom</label>
+            </div>
+            <button class="chgmt_mdp" id="button_mdp">Changer de mot de passe</button>
+            <div class="changement_du_mdp">
+                <div class="champ">
+                    <input type="password" name="mdp1" class="mdpdata" placeholder=""/>
+                    <label for="mdp1" class="mdplabel">Mot de passe actuel</label>
+                </div>
+                <div class="champ">
+                    <input type="password" name="mdp3" class="mdpdata" placeholder=""/>
+                    <label for="mdp2" class="mdplabel">Nouveau mot de passe</label>
+                </div>
+                <div class="champ">
+                    <input type="password" name="mdp3" class="mdpdata" placeholder=""/>
+                    <label for="mdp3" class="mdplabel">Confirmation nouveau mot de passe</label>
+                </div>
+                <div class="valid_cancel">
+                    <button class="valid_mdp" id="button-newmdp"> Valider</button>
+                    <button  class="cancel_mdp" id="button-nomdp">Annuler</button>
+                </div>
+            </div>
+            <div class="champ">
+                <input type="text" name="tel" class="infodata" placeholder=""/>
+                <label for="tel" class="infolabel">Téléphone</label>
+            </div>
+            <div class="champ">
+                <div class="othertitle">Genre</div>
+                <div class="genrebox">
+                    <div class="genreoption">
+                        <input class="genreradio" type="radio" name="genre_user" id="H">
+                        <label class="genrelabel" for="H">Homme</label>
+                    </div>
+                    <div class="genreoption">
+                        <input class="genreradio" type="radio" name="genre_user" id="F">
+                        <label class="genrelabel" for="F">Femme</label>
+                    </div>
+                    <div class="genreoption">
+                        <input class="genreradio" type="radio" name="genre_user" id="A">
+                        <label class="genrelabel"for="A">Autre</label>
+                    </div>
+                </div>
+            </div>
+            <div class="champ">
+                <div class="othertitle">Code postal</div>
+                <input type="text" maxlength="3" pattern="[0-9]+" class="codepostalinput" placeholder="000">
+            </div>
+        <div class="champ">
+            <input type="text" name="addr" class="infodata" placeholder=""/>
+            <label for="addr" class="infolabel">Adresse</label>
+        </div>
+        <div class="champ">
+            <button class="submit">Enregistrer mes informations</button>
+        </div>
+    </div>
+</div>
+
+<script src="{{ asset("infos_perso.js") }}" ></script>
+{% endblock %}

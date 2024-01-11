@@ -1,0 +1,254 @@
+body {
+    background-color: white;
+    margin: 0px;
+}
+
+.contenu{
+    display: grid;
+    grid-template-columns: 427px 1fr;
+}
+
+.lefts{
+    padding-left : 37px;
+    padding-right: 37px;
+    padding-top: 83px;
+    padding-bottom: 90px;
+    background-color: white;
+}
+
+.lefts div {
+    padding-left: 20px;
+    padding-top: 40px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    border-radius: 20px;
+    font-size: 30px;
+    font-weight:bold;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px;
+}
+
+.select{
+    color: white;
+    background-color: black;
+    display: flex;
+}
+
+.rightside {
+    background-color: #F4F4F4;
+    padding-bottom: 90px;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+button{
+    text-decoration: none;
+    color: inherit;
+}
+
+.lefts div:hover {
+    background-color: #3563E9;
+    color: white;
+}
+
+.titre_categorie{
+    color: white;
+    background-color:#3563E9 ;
+    font-size: 30px;
+    font-weight:bold;
+    padding: 45px;
+    margin-bottom: 80px;
+}
+
+.infotitle{
+    font-size: 25px;
+    font-family: 'Inter', sans-serif;
+}
+
+
+.chgmt_mdp {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 50px;
+    display: inline-block;
+    padding: 25px 22px;
+    font-size: 30px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #3563E9;
+    color: white;
+    border-radius: 20px;
+}
+
+.chgmt_mdp:hover {
+    background-color: #0003E9;
+    color: #fff;
+}
+
+.champ{
+    margin-top: 30px;
+    margin-left: 22px;
+    margin-bottom: 50px;
+    position: relative;
+    display: flex;
+    width: 95%;
+    line-height: 1.4    ;
+}
+
+
+.infolabel{
+    pointer-events: none;
+}
+
+
+.infolabel{
+    font-size: 30px;
+    position: absolute;
+    top: 5px;
+    transition: .2s ease;
+}
+
+.infodata:focus{
+    outline: none;
+}
+
+.infodata{
+    position: relative;
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    border-bottom: black solid 2px;
+
+}
+
+
+.infodata:not(:placeholder-shown) + .infolabel,
+.infodata:focus-visible + .infolabel{
+    position: absolute;
+    top: -20px;
+    font-size: 20px;
+}
+
+.chgmt_mdp:active{
+    background-color: #3563E9;
+}
+
+
+
+.mdplabel{
+    pointer-events: none;
+}
+
+
+.mdplabel{
+    font-size: 30px;
+    position: absolute;
+    top: 5px;
+    transition: .2s ease;
+}
+
+.mdpdata:focus{
+    outline: none;
+}
+
+.mdpdata{
+    position: relative;
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    border-bottom: white solid 2px;
+    caret-color: white;
+    color: white;
+}
+
+
+.mdpdata:not(:placeholder-shown) + .mdplabel,
+.mdpdata:focus-visible + .mdplabel{
+    position: absolute;
+    top: -20px;
+    font-size: 20px;
+}
+
+
+
+.changement_du_mdp{
+    background-color: #3563E9;
+    color: white;
+    border-radius: 20px;
+    margin: 50px;
+    padding: 25px;
+    display: none;
+}
+
+.valid_cancel{
+    display: flex;
+    justify-content: space-between;
+}
+
+.valid_mdp, .cancel_mdp, .submit{
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    background-color: white;
+    color: #3563E9;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.valid_mdp:hover, .cancel_mdp:hover, .submit:hover{
+    background-color: #0003E9;
+    color: white;
+}
+
+.valid_mdp:active, .cancel_mdp:active, .submit:active{
+    background-color: white;
+    color: #3563E9;
+}
+
+.othertitle{
+    font-size: 30px;
+}
+
+
+.genrebox{
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    margin-bottom: 20px;
+}
+
+.genrelabel{
+    font-size: 25px;
+}
+
+.genreradio{
+    margin-left: 190px;
+}
+
+.codepostalinput{
+    border: none;
+    background-color: #3563E9;
+    color: white;
+    font-size: 25px;
+    padding-left: 25px;
+    width: 75px;
+    border-radius: 20px;
+    margin-left: 100px;
+}
+
+.codepostalinput::placeholder{
+    opacity: 1;
+}
+

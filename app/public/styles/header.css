@@ -94,6 +94,14 @@ span:nth-child(1) {
     font-size: 20px;
 }
 
+.flow-link{
+    all: inherit;
+}
+
+.flow-link:hover{
+    cursor: pointer;
+}
+
 
 .search-box {
     display: flex;
