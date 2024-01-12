@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %} 
-<link rel="stylesheet" href="styles/produit.css" type="text/css">
+<link rel="stylesheet" href={{asset('styles/produit.css')}} type="text/css">
 {% endblock %}
 
 
 {% block content %}
-<main>
+    <main>
         <div class="principale">
         <div class="container">
             <div class="produit-images">
@@ -37,5 +37,5 @@
             </div>
         </div>
         </div>
-</main>
+    </main>
 {% endblock %}

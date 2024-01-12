@@ -20,7 +20,7 @@ class RegistrationController extends AbstractController
                              UserAuthenticatorInterface $userAuthenticator, UsersAuthenticator $authenticator): Response
     {
         if ($this->getUser())
-            return $this->redirectToRoute('app_test');
+            return $this->redirectToRoute('app_accueil');
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);

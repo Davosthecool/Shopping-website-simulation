@@ -16,4 +16,9 @@ class AccueilController extends AbstractController
             'articles' => $articleRepository->findAll(),
         ]);
     }
+
+    #[Route('/', name: 'app_accueil_redirect')]
+    public function redirect_accueil() : Response{
+       return $this->redirectToRoute('app_accueil');
+    }
 }

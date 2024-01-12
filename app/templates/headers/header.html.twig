@@ -1,5 +1,5 @@
 {% block stylesheets%}
-<link rel="stylesheet" href="styles/header.css" type="text/css"> 
+<link rel="stylesheet" href={{asset('styles/header.css')}} type="text/css"> 
 {% endblock %}
 {% block header %}
 <header>
@@ -9,7 +9,7 @@
                 
             </div>
             <div class="bloc">
-                <a href="{{ path("app_test") }}" class="flow-link">
+                <a href="{{ path("app_accueil") }}" class="flow-link">
                     <h1 id="titre">
                         <span>F</span>
                         <span>low</span>
@@ -18,9 +18,9 @@
 
             </div>
             <div class="bloc" id="icones">
-                <a href=""><img src="icones/profil.png" alt="icone profil"></a>
-                <a href=""><img src="icones/favoris.png" alt="icone favoris"></a>
-                <a href=""><img src="icones/panier.png" alt="icone panier"></a>
+                <a href=""><img src={{asset('icones/profil.png')}} alt="icone profil"></a>
+                <a href=""><img src={{asset('icones/favoris.png')}} alt="icone favoris"></a>
+                <a href=""><img src={{asset('icones/panier.png')}} alt="icone panier"></a>
             </div>
         </div>
 

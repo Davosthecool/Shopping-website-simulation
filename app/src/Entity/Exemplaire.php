@@ -13,8 +13,8 @@ class Exemplaire
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $taille = null;
+    #[ORM\Column(length : 1)]
+    private ?string $taille = null;
 
     #[ORM\Column(length: 255)]
     private ?string $couleur = null;
@@ -26,34 +26,14 @@ class Exemplaire
     #[ORM\ManyToOne(inversedBy: 'contenu')]
     private ?Panier $panier = null;
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getTaille(): ?int
+    public function getTaille(): ?string
     {
         return $this->taille;
-    }
-
-    public function getTailleLabel(): ?string
-    {
-        switch ($this->getTaille()) {
-            case 1:
-                return 'XS';
-            case 2:
-                return 'S';
-            case 3:
-                return 'M';
-            case 4:
-                return 'L';
-            case 5:
-                return 'XL';
-                                                
-            default:
-                break;
-        }
-        return '';
     }
 
     public function setTaille(int $taille): static
@@ -83,7 +63,7 @@ class Exemplaire
     public function setType(?Article $type): static
     {
         $this->type = $type;
-
+        $type->addExemplaire($this);
         return $this;
     }
 

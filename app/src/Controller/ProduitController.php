@@ -18,25 +18,17 @@ use function PHPUnit\Framework\isNull;
 
 class ProduitController extends AbstractController
 {
-    #[Route('/produit', name: 'app_produit')]
-    public function index(ArticleRepository $Arep, ExemplaireRepository $Erep, UserRepository $Urep, Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/produit/{produit_id}', name: 'app_produit', requirements: ['id'=>'\d+'])]
+    public function index(int $produit_id, ArticleRepository $Arep, ExemplaireRepository $Erep, UserRepository $Urep, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $produit = $Arep->find(1);
-
-        $exemplaire = new Exemplaire();
-        $form = $this->createForm(AddProduitType::class, $exemplaire);
+        $produit = $Arep->find($produit_id);
+        $form = $this->createForm(AddProduitType::class, new Exemplaire());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $session = $request->getSession();
 
-            // $exemplaire = $form->getData();
-            // $exemplaire->setType($produit);// probleme de dulication d'exemplaires dans bdd
-            // $entityManager->persist($exemplaire);//pour l'instant on cree un exemplaire
-            // $entityManager->flush();//le but est d'avoir des esemplaires et de se baser sur le stock
-            // pour afficher les tailles/couleurs possibles puis de les retirer du stock quand ils sont achetes
-            //doit rajouter le fait de mettre dans le panier
             $exemplaire = $Erep->findOneBy(['taille' => $form->get('taille')->getData(), 'couleur' => $form->get('couleur')->getData(), 'panier' => null]);
             if ($exemplaire == null){
                 return $this->render('produit.html.twig', [
@@ -60,15 +52,4 @@ class ProduitController extends AbstractController
             'addproduitForm' => $form->createView(),
         ]);
     }
-
-    #[Route('/produit/add', name: 'app_produit_add')]
-    public function add(ArticleRepository $rep): Response
-    {
-        $produit = $rep->find(2);
-        return $this->render('produit.html.twig', [
-            'produit' => $produit,
-        ]);
-    }
-
-
 }

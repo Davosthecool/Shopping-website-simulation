@@ -42,7 +42,7 @@ class Article
     private ?string $marque = null;
 
     #[ORM\Column]
-    private ?int $stock = null;
+    private ?int $stock = 0;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -93,6 +93,24 @@ class Article
         return $this;
     }
 
+    public function addTaille(string $taille): static
+    {
+        if (!in_array($taille, $this->tailles)){
+            $this->tailles[] = $taille;
+        }
+
+        return $this;
+    }
+
+    public function removeTaille(array $taille): static
+    {
+        if (in_array($taille, $this->tailles)){
+            unset($this->tailles[array_search($taille,$this->tailles)]);
+        }
+
+        return $this;
+    }
+
     public function getCouleurs(): array
     {
         return $this->couleurs;
@@ -101,6 +119,24 @@ class Article
     public function setCouleurs(array $couleurs): static
     {
         $this->couleurs = $couleurs;
+
+        return $this;
+    }
+
+    public function addCouleur(string $couleur): static
+    {
+        if (in_array($couleur, $this->couleurs)){
+            $this->couleurs[] = $couleur;
+        } 
+
+        return $this;
+    }
+
+    public function removeCouleur(array $couleur): static
+    {
+        if (in_array($couleur, $this->couleurs)){
+            unset($this->couleurs[array_search($couleur,$this->couleurs)]);
+        }
 
         return $this;
     }
@@ -154,8 +190,9 @@ class Article
         if (!$this->exemplaires->contains($exemplaire)) {
             $this->exemplaires->add($exemplaire);
             $exemplaire->setType($this);
-        }else{
-            $this->exemplaires->get($this->exemplaires->indexOf($exemplaire))->addQuantite();
+            $this->addTaille($exemplaire->getTaille());
+            $this->addCouleur($exemplaire->getCouleur());
+            $this->addStock();
         }
 
         return $this;
@@ -193,6 +230,20 @@ class Article
     public function setStock(int $stock): static
     {
         $this->stock = $stock;
+
+        return $this;
+    }
+
+    public function addStock(int $stock = 1): static
+    {
+        $this->stock += $stock;
+
+        return $this;
+    }
+
+    public function removeStock(int $stock = 1): static
+    {
+        $this->stock -= $stock;
 
         return $this;
     }

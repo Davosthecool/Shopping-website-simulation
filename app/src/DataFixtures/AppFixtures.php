@@ -22,8 +22,8 @@ class AppFixtures extends Fixture
             $product = new Article();
             $product->setNom($this->faker->words(4,true))
                 ->setPrix(mt_rand(100,10000) / 100)
-                ->setTailles(['XS','S','M','L','XL'])
-                ->setCouleurs(['vert','rouge','bleu','violet','rose','orange','marron'])
+                ->setTailles([])
+                ->setCouleurs([])
                 ->setTags([''])
                 ->setSexe($sexes[mt_rand(0,count($sexes)-1)])
                 ->setCategorie(null)

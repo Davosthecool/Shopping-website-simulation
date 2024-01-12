@@ -1,11 +1,11 @@
 {% block stylesheets %}
-<link rel="stylesheet" href="styles/simple_header.css" type="text/css"> 
+<link rel="stylesheet" href={{asset('styles/simple_header.css')}} type="text/css"> 
 {% endblock %}
 
 {% block header %}
 <header>
     <nav class="navigation">
-        <a href="" class="">
+        <a href="{{ path("app_accueil") }}" class="">
            <p class="flow">Flow</p>
         </a>
     </nav>
