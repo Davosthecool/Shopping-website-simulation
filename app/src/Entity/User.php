@@ -34,10 +34,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Article::class)]
     private Collection $favoris;
 
-    // #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    // #[ORM\JoinColumn(nullable: false)]
-    // private Panier $panier;
-
     #[ORM\OneToOne(mappedBy: 'utilisateur', cascade: ['persist', 'remove'])]
     private ?Panier $panier;
 
