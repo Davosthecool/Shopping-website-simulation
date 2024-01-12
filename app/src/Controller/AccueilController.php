@@ -28,13 +28,17 @@ class AccueilController extends AbstractController
 
     #[Route('/accueil/{article_id}', name: 'accueil_add_favoris', requirements: ['article_id'=>'\d+'])]
     public function add_favoris(int $article_id,EntityManagerInterface $entityManager, UserRepository $userRepository, ArticleRepository $articleRepository, Request $request) : Response{
-        $email = $request->getSession()->get('email');
-        if ($email!=null){
-            $user = $userRepository->getUserByEmail($email);
+        $user = $this->getUser();
+        if ($user!=null){
+            $user = $userRepository->find($user);
             $article = $articleRepository->find($article_id);
-            $user->addFavori($article);
+            if (!$user->addFavori($article)){
+                $user->removeFavori($article);
+            }
             $entityManager->persist($user);
             $entityManager->flush();
+        }else{
+            return $this->redirectToRoute('app_login');
         }
         return $this->redirectToRoute('app_accueil');
     }

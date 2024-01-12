@@ -13,7 +13,7 @@ class Exemplaire
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length : 1)]
+    #[ORM\Column(length : 2)]
     private ?string $taille = null;
 
     #[ORM\Column(length: 255)]
@@ -36,7 +36,7 @@ class Exemplaire
         return $this->taille;
     }
 
-    public function setTaille(int $taille): static
+    public function setTaille(string $taille): static
     {
         $this->taille = $taille;
 

@@ -22,7 +22,7 @@ class ProduitController extends AbstractController
     public function index(int $produit_id, ArticleRepository $Arep, ExemplaireRepository $Erep, UserRepository $Urep, Request $request, EntityManagerInterface $entityManager): Response
     {
         $produit = $Arep->find($produit_id);
-        $form = $this->createForm(AddProduitType::class, new Exemplaire());
+        $form = $this->createForm(AddProduitType::class, new Exemplaire(), ['produit' => $produit]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -36,16 +36,23 @@ class ProduitController extends AbstractController
                     'addproduitForm' => $form->createView(),
                 ]);
             }
-            $panier = $Urep->findOneBy(['email' => $session->get('email')])->getPanier();
-            $panier->addContenu($exemplaire);
 
-            $entityManager->persist($panier);
-            $entityManager->flush();
+            $user = $this->getUser();
+            if ($user!=null){
+                $panier = $Urep->find($user)->getPanier();
+                $panier->addContenu($exemplaire);
 
-            return $this->render('produit.html.twig', [
-                'produit' => $produit,
-                'addproduitForm' => $form->createView(),
-            ]);
+                $entityManager->persist($panier);
+                $entityManager->flush();
+
+                return $this->render('produit.html.twig', [
+                    'produit' => $produit,
+                    'addproduitForm' => $form->createView(),
+                ]);
+            }else{
+                return $this->redirectToRoute('app_login');
+            }
+            
         }
         return $this->render('produit.html.twig', [
             'produit' => $produit,

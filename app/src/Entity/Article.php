@@ -16,19 +16,19 @@ class Article
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255, nullable: false)]
     private ?string $nom = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
     private ?float $prix = null;
 
-    #[ORM\Column(type: Types::SIMPLE_ARRAY)]
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private array $tailles = [];
 
-    #[ORM\Column(type: Types::SIMPLE_ARRAY)]
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private array $couleurs = [];
 
-    #[ORM\Column(type: Types::SIMPLE_ARRAY)]
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private array $tags = []; #Tag
 
     private ?string $sexe = null;
@@ -125,7 +125,7 @@ class Article
 
     public function addCouleur(string $couleur): static
     {
-        if (in_array($couleur, $this->couleurs)){
+        if (!in_array($couleur, $this->couleurs)){
             $this->couleurs[] = $couleur;
         } 
 

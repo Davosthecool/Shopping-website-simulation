@@ -138,20 +138,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->favoris;
     }
 
-    public function addFavori(Article $favori): static
+    public function addFavori(Article $favori): bool
     {
         if (!$this->favoris->contains($favori)) {
             $this->favoris->add($favori);
+            return true;
         }
 
-        return $this;
+        return false;
     }
 
-    public function removeFavori(Article $favori): static
+    public function removeFavori(Article $favori): bool
     {
-        $this->favoris->removeElement($favori);
-
-        return $this;
+        return $this->favoris->removeElement($favori);
     }
 
     public function getPanier(): ?Panier
