@@ -1,0 +1,84 @@
+.elt_transaction{
+    margin: 50px 150px 50px 150px;
+}
+
+.ht_head{
+    display: flex;
+    justify-content: space-between;
+    font-size: 40px;
+    border: solid 1px black;
+    border-radius: 20px 20px 0px 0px;
+    background-color: white;
+}
+
+.ht_transac_id{
+    margin: 30px;
+}
+
+#ITEMS{
+    display: none;
+}
+
+.ht_date{
+    margin: 30px;
+    margin-right: 55px;
+}
+
+.ht_foot{
+    display: grid;
+    grid-template-rows: auto;
+    border: solid 1px black;
+    border-radius: 0px 0px 20px 20px;
+    background-color: white;
+}
+
+.ht_fdp{
+    margin: 30px 30px 0px 0px;
+    display: flex;
+    justify-content: end;
+}
+
+.ht_prix{
+    margin: 30px 30px 30px 30px;
+    font-size: 40px;
+    display: flex;
+    justify-content: end;
+}
+
+
+
+.ht_items{
+    border: solid 1px black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: white;
+}
+
+.item_name, .item_quantity, .price{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.item_name, .item_quantity, .item_price{
+    font-size: 20px;
+}
+
+.ht_data{
+    display: flex;
+    justify-content: center;
+}
+
+.ht_arrow, .ht_arrow2{
+    height: 150px;
+    position: absolute;
+    margin: 10px;
+}
+
+.ht_arrow{
+    transform: rotate(180deg);
+    display: block;
+}
+
+.ht_arrow2{
+    display: none;
+}
