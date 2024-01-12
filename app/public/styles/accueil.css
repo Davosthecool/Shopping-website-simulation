@@ -40,7 +40,7 @@
     background-repeat: no-repeat;
     aspect-ratio: 1/1;
     width: 50%;
-    background-image: url(/src/images/icones/fleche.png);
+    background-image: url(../icones/fleche.png);
 }
 #flechedroite{
     transform: rotateY(180deg);
