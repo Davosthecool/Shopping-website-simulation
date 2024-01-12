@@ -41,8 +41,8 @@
 }
 .prix{
     background-color:var(--couleurprincipalefondu);
-    height: 30;
-    width: 80;
+    height: 30px;
+    width: 80px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -51,7 +51,7 @@
 .favoris_article{
     width: 53px;
     height: 53px;
-    background-image: url('src/images/icones/heart.svg');
+    background-image: url('icones/heart.svg');
     background-size: cover;
     cursor: pointer;
     transition: all 0.5s;
@@ -60,7 +60,7 @@
     transform:scale(1) ;
 }
 .favoris_article.clicked{
-    background-image: url('src/images/icones/heartfilled.svg');
+    background-image: url('icones/heartfilled.svg');
     animation: pulse 0.5s ease-in-out;
     transition: all 0.5s;
 }

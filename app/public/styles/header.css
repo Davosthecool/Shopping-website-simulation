@@ -3,6 +3,7 @@
   --couleurprincipale: #3563E9;
   --globalback: #F4F4F4;
   --couleursecondaire : #292D32;
+  --couleurprincipalefondu: #3562e936;
 }
 
 body{
@@ -109,7 +110,7 @@ span:nth-child(1) {
     background: #666666;
     height: 10px;
     border-radius: 40px;
-    padding: 10 0px 10px 10px;
+    padding: 10px 0px 10px 10px;
     justify-content: center;
     align-items: center;
   }
@@ -143,7 +144,7 @@ span:nth-child(1) {
     background: none;
     outline: none;
     float: left;
-    padding: 0;
+    padding: 0px;
     color: white;
     font-size: 16px;
     transition: 0.4s;
@@ -155,7 +156,7 @@ span:nth-child(1) {
 #barre::before{
 content: "";
 position: absolute;
-width: 0;
+width: 0px;
 height: 2px; /* Épaisseur de la barre */
 bottom: 0;
 background-color: var(--couleursecondaire); /* Couleur de la barre */
