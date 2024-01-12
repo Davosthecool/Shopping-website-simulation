@@ -90,6 +90,7 @@ span:nth-child(1) {
 
 .flow-link{
     all: inherit;
+    z-index: 50;
 }
 
 .flow-link:hover{

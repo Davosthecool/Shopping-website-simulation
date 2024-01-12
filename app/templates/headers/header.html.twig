@@ -1,5 +1,5 @@
 {% block stylesheets%}
-<link rel="stylesheet" href={{asset('styles/header.css')}} type="text/css"> 
+<link rel="stylesheet" href={{asset('/styles/header.css')}} type="text/css">
 {% endblock %}
 {% block header %}
 <header>
@@ -18,9 +18,12 @@
 
             </div>
             <div class="bloc" id="icones">
-                <a href=""><img src={{asset('icones/profil.png')}} alt="icone profil"></a>
-                <a href=""><img src={{asset('icones/favoris.png')}} alt="icone favoris"></a>
-                <a href=""><img src={{asset('icones/panier.png')}} alt="icone panier"></a>
+                <a href="{{ path("app_profil") }}"><img src="/icones/profil.png" alt="icone profil"></a>
+                <a href=""><img src="/icones/favoris.png" alt="icone favoris"></a>
+                <a href="{{ path("app_panier") }}"><img src="/icones/panier.png" alt="icone panier"></a>
+                {% if (app.user) %}
+                    <a href="{{ path("app_logout") }}">Se deconnecter</a>
+                {% endif %}
             </div>
         </div>
 

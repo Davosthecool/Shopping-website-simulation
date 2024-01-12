@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" type="image/png" href="images/logo.png">
-        <link rel="stylesheet" href={{ asset('styles/global.css')}} type="text/css">
+        <link rel="icon" type="image/png" href="/images/logo.png">
+        <link rel="stylesheet" href={{ asset('/styles/global.css')}} type="text/css">
         {% block stylesheets %}{% endblock %}
 
     </head>
@@ -21,4 +21,18 @@
 
         {% block scripts %}{% endblock %}
     </body>
+    <script>
+        function afficherBoiteDialogue(type, message) {
+            Swal.fire({
+                icon: type,
+                title: type.charAt(0).toUpperCase() + type.slice(1),
+                text: message,
+            })
+        }
+        {% for type, flashMessages in app.session.flashBag.all() %}
+        {% for flashMessage in flashMessages %}
+        afficherBoiteDialogue('{{ type }}', '{{ flashMessage|e('js') }}')
+        {% endfor %}
+        {% endfor %}
+    </script>
 </html>

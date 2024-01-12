@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/styles/panier.css" type="text/css">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="principale">
+        <div class="principale-titre">
+            <h3>Mon panier</h3>
+        </div>
+        <div class="principale-main">
+            <div class="product-list">
+                {% for i in 0..10%}
+                    <div  class="produit">
+                        <div class="produit-image">
+                            <img src="/images/image 5.png" alt="">
+                        </div>
+                        <div class="produit-nom">
+                            <p>Mon produit</p>
+                        </div>
+                        <div class="produit-informations">
+                            <p>Quantite : 5</p>
+                            <p>Couleur : Rouge-Pétillant</p>
+                            <p>Prix : 560 $</p>
+                        </div>
+                        <div class="produit-options">
+                            <div class="option-quantite">
+                                <a href="">+</a>
+                                <a href="">-</a>
+                            </div>
+                            <div class="option-retirer">
+                                <a href="">Retirer</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="principale-footer">
+            <a href="">Vider le panier</a>
+        </div>
+    </div>
+</main>
+{% endblock %}
