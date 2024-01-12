@@ -10,3 +10,5 @@ rm migrations/*;
 symfony console doctrine:database:create;
 symfony console make:migration;
 echo yes | symfony console doctrine:migrations:migrate;
+
+echo yes | symfony console doctrine:fixture:load;

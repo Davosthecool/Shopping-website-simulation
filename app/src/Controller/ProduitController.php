@@ -18,7 +18,7 @@ use function PHPUnit\Framework\isNull;
 
 class ProduitController extends AbstractController
 {
-    #[Route('/produit/{produit_id}', name: 'app_produit', requirements: ['id'=>'\d+'])]
+    #[Route('/produit/{produit_id}', name: 'app_produit', requirements: ['produit_id'=>'\d+'])]
     public function index(int $produit_id, ArticleRepository $Arep, ExemplaireRepository $Erep, UserRepository $Urep, Request $request, EntityManagerInterface $entityManager): Response
     {
         $produit = $Arep->find($produit_id);
