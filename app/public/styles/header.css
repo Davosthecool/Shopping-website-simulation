@@ -28,9 +28,10 @@ body{
     display: flex;
     justify-content: center;
     transition: all 0.5s;
+    user-select: none;
 }
 #titre:hover {
-    text-shadow: 0 0 5px #000000;
+    text-shadow: 0 0 5px #5a5a5a;
 }
 span:nth-child(1) {
     color: var(--couleurprincipale);
@@ -108,7 +109,7 @@ span:nth-child(1) {
     background: #666666;
     height: 10px;
     border-radius: 40px;
-    padding: 10px;
+    padding: 10 0px 10px 10px;
     justify-content: center;
     align-items: center;
   }

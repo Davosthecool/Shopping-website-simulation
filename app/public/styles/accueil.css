@@ -1,0 +1,47 @@
+#content{
+    display: flex;
+    background-color: var(--globalback);
+    z-index: 1;
+    flex-direction: column;
+
+}
+#solde{
+    display: flex;
+
+    margin: 50 0 0 3% ;
+    width: 94%;
+    height: 300px;
+    background-color:#d63c3c;
+    color:whitesmoke;
+    font-size: 100;
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-family: "Unica77-LL-TT",Helvetica,Arial,sans-serif;
+
+}
+#boxsolde{
+    display: flex;
+    justify-content: center;
+    align-items:baseline;
+    justify-content: baseline;
+    width: 70%;
+}
+.boxfleche{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+}
+.fleche{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    aspect-ratio: 1/1;
+    width: 50%;
+    background-image: url(/src/images/icones/fleche.png);
+}
+#flechedroite{
+    transform: rotateY(180deg);
+}

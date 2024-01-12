@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="styles/acceuil.css" type="text/css">
+<link rel="stylesheet" href="styles/article.css" type="text/css">
+{% endlblock %}
+
+{% block content %}
+<div id="content">
+    <div id="solde">
+        <div class="boxfleche"><a class="fleche"></a></div>
+        <div id="boxsolde">SOLDES</div>
+        <div class="boxfleche"><a class="fleche" id="flechedroite"></a></div>
+    </div>
+    <div id="articles">
+
+        <div class="article">
+            <div class="partie_article">
+                <div class="prix_favoris">
+                    <div class="prix">29.99€</div>
+                    <a onclick="heart()" id="heart" class="favoris_article"></a>
+                </div>
+                <img class="image_article" src="src/images/articles/pull1.png">
+                <div class="desc_article">Pull d’hiver bleu clair en laine avec manches à effet spirales torsadées </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
