@@ -1,7 +1,7 @@
 #alimentation  de user avec des données
-echo "
-insert into user values(1, 'dada@gmail.com', '["user"]', '$2y$13$6X.eFQ4MvgGhkp77z0DaOeJZp/KkrBxdI.O/mAF1v0V4fwnm/hD8a', 'H', 'ddd', 'ddd');
-" | mariadb -u admin -ppassword app ;
+# echo "
+# insert into user values(1, 'dada@gmail.com', '["user"]', '$2y$13$6X.eFQ4MvgGhkp77z0DaOeJZp/KkrBxdI.O/mAF1v0V4fwnm/hD8a', 'H', 'ddd', 'ddd');
+# " | mariadb -u admin -ppassword app ;
 
 
 #alimentation de article avec des données
@@ -17,3 +17,6 @@ insert into exemplaire values(20,1,NULL,2,'vert');
 insert into exemplaire values(21,1,NULL,5,'vert');
 insert into exemplaire values(22,1,NULL,5,'bleu');
 " | mariadb -u admin -ppassword app ;
+
+mariadb -u admin -ppassword app;
+

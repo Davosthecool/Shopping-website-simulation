@@ -1,11 +1,3 @@
-:root{
-  --nom-categories : normal 600 25px "Inter", sans-serif ;
-  --couleurprincipale: #3563E9;
-  --globalback: #F4F4F4;
-  --couleursecondaire : #292D32;
-  --couleurprincipalefondu: #3562e936;
-}
-
 body{
   margin: 0;
   flex-wrap: wrap;

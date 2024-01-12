@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="styles/acceuil.css" type="text/css">
-<link rel="stylesheet" href="styles/article.css" type="text/css">
-{% endlblock %}
+<link rel="stylesheet" href="styles/accueil.css" type="text/css">
+{% endblock %}
 
 {% block content %}
 <div id="content">
@@ -13,17 +12,24 @@
         <div class="boxfleche"><a class="fleche" id="flechedroite"></a></div>
     </div>
     <div id="articles">
-
-        <div class="article">
-            <div class="partie_article">
-                <div class="prix_favoris">
-                    <div class="prix">29.99€</div>
-                    <a onclick="heart()" id="heart" class="favoris_article"></a>
-                </div>
-                <img class="image_article" src="src/images/articles/pull1.png">
-                <div class="desc_article">Pull d’hiver bleu clair en laine avec manches à effet spirales torsadées </div>
-            </div>
-        </div>
+        {% for article in articles%}
+        {% include asset('article.html.twig')%}
+        {% endfor %}
+        
+       
     </div>
 </div>
+{% endblock %}
+
+{% block scripts%}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var heartElements = document.getElementsByClassName('favoris_article');
+    
+        for (var i = 0; i < heartElements.length; i++) {
+            heartElements[i].addEventListener('click', function() {
+                this.classList.toggle('clicked');
+            });
+        }});
+</script>
 {% endblock %}
