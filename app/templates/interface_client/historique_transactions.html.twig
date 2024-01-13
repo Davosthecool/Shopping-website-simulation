@@ -2,19 +2,19 @@
 {% block title %} Historique transactions {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href={{asset('styles/historique_transaction.css')}} type="text/css"><link rel="stylesheet" href="styles/interface_utilisateur.css" type="text/css">
+    <link rel="stylesheet" href={{asset('/styles/historique_transaction.css')}} type="text/css"><link rel="stylesheet" href="/styles/interface_utilisateur.css" type="text/css">
 {% endblock %}
 
 {% block content %}
-    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('styles/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('/styles/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('/styles/footer.css') }}">
     <div class="contenu">
         <div class="leftside">
             <div class="lefts">
-                <a href="/infos_perso"> <div class="not_select"> Mes infos perso </div> </a>
-                <a href="/historique_transactions"> <div class="select"> Historique transactions </div> </a>
-                <a href="/bons_d'achat"> <div class="not_select"> Bons d'achat </div> </a>
-                <a href="/support_client"> <div class="not_select"> Support client </div> </a>
+                <a href="/profil/infos"> <div class="not_select"> Mes infos perso </div> </a>
+                <a href="/profil/historique_transactions"> <div class="select"> Historique transactions </div> </a>
+                <a href="/profil/bons_d'achat"> <div class="not_select"> Bons d'achat </div> </a>
+                <a href="/profil/support_client"> <div class="not_select"> Support client </div> </a>
             </div>
         </div>
         <div class="rightside">

@@ -13,6 +13,7 @@ class PanierController extends AbstractController
     {
         if ($this->getUser() == null)
             return $this->redirectToRoute('app_login');
+        $panier = ($this->getUser());
         return $this->render('panier/index.html.twig', []);
     }
 }

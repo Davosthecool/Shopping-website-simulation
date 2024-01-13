@@ -57,6 +57,7 @@ span:nth-child(1) {
     gap: 40px;
 
     justify-content: end;
+    align-items: center;
 }
 #header_top #icones img{
     height: 50px;
@@ -161,3 +162,9 @@ transition: width 0.3s ease; /* Transition de la largeur avec un délai de 0.3s 
 #barre:hover::after {
   width: 7%; /* Largeur de la barre pendant le survol (50% pour une barre centrée) */
 }
+
+.logout{
+    transition: .3s ease-in;
+}
+
+

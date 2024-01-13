@@ -22,7 +22,7 @@
                 <a href=""><img src="/icones/favoris.png" alt="icone favoris"></a>
                 <a href="{{ path("app_panier") }}"><img src="/icones/panier.png" alt="icone panier"></a>
                 {% if (app.user) %}
-                    <a href="{{ path("app_logout") }}">Se deconnecter</a>
+                    <a href="{{ path("app_logout") }}" class="btn btn-outline-danger logout">Se deconnecter</a>
                 {% endif %}
             </div>
         </div>
@@ -44,8 +44,8 @@
             </div>
 
             <div class="search-box">
-                <input type="text" name="" class="search-txt" placeholder="Tapez pour rechercher" />
-                <a class="search-btn" href="src/images/icones/rechercher.png">
+                <input type="search" name="" class="search-txt" placeholder="Tapez pour rechercher" value=""/>
+                <a class="search-btn" >
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </a>
               </div>

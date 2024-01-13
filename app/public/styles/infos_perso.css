@@ -1,9 +1,9 @@
 .titre_categorie{
     color: white;
     background-color:#3563E9 ;
-    font-size: 30px;
+    font-size: 26px;
     font-weight:bold;
-    padding: 45px;
+    padding: 40px;
     margin-bottom: 80px;
 }
 
@@ -39,7 +39,7 @@
     margin-bottom: 50px;
     position: relative;
     display: flex;
-    width: 95%;
+    width: 100%;
     line-height: 1.4    ;
 }
 
@@ -50,7 +50,7 @@
 
 
 .infolabel{
-    font-size: 30px;
+    font-size: 22px;
     position: absolute;
     top: 5px;
     transition: .2s ease;
@@ -78,7 +78,7 @@
 .infodata:focus-visible + .infolabel{
     position: absolute;
     top: -20px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .chgmt_mdp:active{

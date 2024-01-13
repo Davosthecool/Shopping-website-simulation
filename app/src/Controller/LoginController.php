@@ -21,7 +21,7 @@ class LoginController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
         if ($error != null)
-            $this->addFlash("error", $lastUsername);
+            $this->addFlash("error", "Identifiant ou mot de passe incorrect");
 
         return $this->render('connexion/login.html.twig', [
             'lastUsername' => $lastUsername,
@@ -31,6 +31,7 @@ class LoginController extends AbstractController
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {
+
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }
