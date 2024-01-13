@@ -1,0 +1,48 @@
+.code_box{
+    border-radius: 20px;
+    background-color: white;
+    border: solid 1px ;
+    margin: 50px;
+    display: grid;
+    padding: 50px;
+}
+
+.submit{
+    margin-top: 50px;
+    background-color: black;
+    font-size: 30px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    justify-self: end;
+    align-self: end;
+}
+
+.submit:hover{
+    background-color: #3563E9;
+}
+
+.submit:active{
+    background-color: black;
+}
+
+.code_title{
+    font-size: 25px;
+    justify-self: center;
+    align-self: start;
+    margin: 10px;
+}
+
+.bon_input{
+    border: none;
+    border-bottom: solid 1px black;
+    margin-top: 10px;
+    justify-self: center;
+    align-self: center;
+    width: 75%;
+}
+
+.bon_input:focus{
+    outline: none;
+}

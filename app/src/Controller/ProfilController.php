@@ -30,4 +30,20 @@ class ProfilController extends AbstractController
             return $this->redirectToRoute('app_login');
         return $this->render('interface_client/historique_transactions.html.twig');
     }
+
+    #[Route('/profil/bons-d-achat', name: 'app_bons-d-achat')]
+        public function bonsAchat(): Response
+        {
+            if (!$this->getUser())
+                return $this->redirectToRoute('app_login');
+            return $this->render('interface_client/bons_achat.html.twig');
+        }
+
+    #[Route('/profil/support-client', name: 'app_support-client')]
+            public function supportClient(): Response
+            {
+                if (!$this->getUser())
+                    return $this->redirectToRoute('app_login');
+                return $this->render('interface_client/support_client.html.twig');
+            }
 }

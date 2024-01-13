@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href={{asset('/styles/support_client.css')}} type="text/css"><link rel="stylesheet" href="/styles/interface_utilisateur.css" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="contenu">
+    <div class="leftside">
+        <div class="lefts">
+            <a href="/profil/infos"> <div class="not_select"> Mes infos perso </div> </a>
+            <a href="/profil/historique-commandes"> <div class="not_select"> Historique commandes </div> </a>
+            <a href="/profil/bons-d-achat"> <div class="not_select"> Bons d'achat </div> </a>
+            <a href="/profil/support-client"> <div class="select"> Support client </div> </a>
+        </div>
+    </div>
+    <div class="rightside">
+        <div class="help">
+            <div class="help_box">
+                <div class="title">
+                    <div class="help_title">Vous avez rencontré un problème ?</div>
+                    <div class="help_title2">Nous sommes là !</div>
+                </div>
+                <div class="help_etape">
+                    <div class="etape_title1">Etape 1)</div>
+                    <div class="etape_title2">Sélectionnez la catégorie à laquelle votre problème appartient :</div>
+                    <select class="selectionpb">
+                        <option value=""> Choisissez une catégorie </option>
+                        <option value="1"> Produit defectueux </option>
+                        <option value="2"> Commande non arrivée</option>
+                        <option value="3"> Produit manquant </option>
+                        <option value="4"> Problème lié au compte </option>
+                        <option value="5"> Autre </option>
+                    </select>
+                </div>
+                <div class="help_etape">
+                    <div class="etape_title1">Etape 2)</div>
+                    <div class="etape_title2">Expliquez votre problème :</div>
+                    <textarea rows="15" cols="60" placeholder="Dites nous tout !"></textarea>
+                </div>
+                <div class="help_etape_f">
+                      <div class="etape_title1">Etape 3)</div>
+                      <div class="etape_title2">C'est parti !</div>
+                      <button class="submit">Envoyer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ asset("infos_perso.js") }}" ></script>
+{% endblock %}

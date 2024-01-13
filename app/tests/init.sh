@@ -1,6 +1,6 @@
 #installation initiale nécessaire
 composer install;
-service mariadb start;
+sudo service mariadb start;
 
 #suppression de potentielles versions anciennes
 symfony console doctrine:database:drop --force;

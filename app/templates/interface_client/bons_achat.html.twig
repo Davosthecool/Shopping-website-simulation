@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href={{asset('/styles/bons_achat.css')}} type="text/css"><link rel="stylesheet" href="/styles/interface_utilisateur.css" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="contenu">
+    <div class="leftside">
+        <div class="lefts">
+            <a href="/profil/infos"> <div class="not_select"> Mes infos perso </div> </a>
+            <a href="/profil/historique-commandes"> <div class="not_select"> Historique commandes </div> </a>
+            <a href="/profil/bons-d-achat"> <div class="select"> Bons d'achat </div> </a>
+            <a href="/profil/support-client"> <div class="not_select"> Support client </div> </a>
+        </div>
+    </div>
+    <div class="rightside">
+        <div class="code_box">
+            <div class="code_title" for="bon_achat">Entrez votre code de bon d'achat</div>
+            <input class="bon_input" type="text" name="bon_achat">
+            <button class="submit">Valider</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
