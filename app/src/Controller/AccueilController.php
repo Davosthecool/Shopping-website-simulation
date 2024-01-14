@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ResearchType;
 use App\Repository\ArticleRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
@@ -14,10 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccueilController extends AbstractController
 {
     #[Route('/accueil', name: 'app_accueil')]
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(ArticleRepository $articleRepository, Request $request): Response
     {
+        $researchForm = $this->createForm(ResearchType::class);
+        $researchForm->handleRequest($request);
+        if ($researchForm->isSubmitted() && $researchForm->isValid()) {
+            return $this->render('accueil.html.twig', [
+                'articles' => $articleRepository->findByNomContains(explode(' ',$researchForm->get('recherche')->getData() )),
+                'researchForm' => $researchForm
+            ]);
+        }
+
         return $this->render('accueil.html.twig', [
             'articles' => $articleRepository->findAll(),
+            'researchForm' => $researchForm
         ]);
     }
 

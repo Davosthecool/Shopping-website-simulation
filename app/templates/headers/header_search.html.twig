@@ -43,6 +43,13 @@
                 </div>
             </div>
 
+            <div class="search-box">
+                {{ form_start(researchForm) }}
+                {{ form_widget(researchForm.recherche, {'attr' : {'class' : 'search-txt', 'placeholder' : 'Tapez pour rechercher' }}) }}
+                {{ form_widget(researchForm.submit, {'attr' : {'class' : 'search-btn'}} ) }}
+                {{ form_end(researchForm) }}
+            </div>
+
         </div>
         
     </div>

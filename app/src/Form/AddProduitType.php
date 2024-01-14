@@ -15,20 +15,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AddProduitType extends AbstractType
 {
-    // private $er;
-    // private $tailles;
-
-    //  public function __construct() {
-        
-        //     $this->er = $exemplaireRepository;
-    //     $ex = new Exemplaire;
-    //     $taille = $this->makeChoicesfor('taille');
-    //     foreach ($taille as $value){
-    //         $this->tailles[$ex->getTailleLabel()] = $value;
-    //     }
-    //     $couleurs = array();
-
-    // }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $taille_choices = array();
@@ -55,15 +41,7 @@ class AddProduitType extends AbstractType
             ->add('submit', SubmitType::class, ['label' => 'Ajouter au panier'])
             ;
     }
-
-    // public function makeChoicesfor(string $field) : array{
-    //     return $this->er->createQueryBuilder('e')
-    //     ->select("DISTINCT e.$field")
-    //     ->andWhere("e.panier IS NULL")
-    //     ->getQuery()
-    //     ->getArrayResult();
-    // }
-
+    
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

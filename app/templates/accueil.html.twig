@@ -5,6 +5,10 @@
 <link rel="stylesheet" href={{asset('styles/article.css')}} type="text/css">
 {% endblock %}
 
+{% block header %}
+{% include asset('headers/header_search.html.twig') %}
+{% endblock %}
+
 {% block content %}
 <div id="content">
     <div id="solde">
