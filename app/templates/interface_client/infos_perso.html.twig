@@ -8,71 +8,58 @@
 <div class="contenu">
     <div class="leftside">
         <div class="lefts">
-            <a href="/profil/infos"> <div class="select"> Mes infos perso </div> </a>
-            <a href="/profil/historique-commandes"> <div class="not_select"> Historique commandes </div> </a>
+            <a> <div class="select"> Mes infos perso </div> </a>
+            <a href="/profil/historique-commandes"> <div class="not_select"> Historique transactions </div> </a>
             <a href="/profil/bons-d-achat"> <div class="not_select"> Bons d'achat </div> </a>
             <a href="/profil/support-client"> <div class="not_select"> Support client </div> </a>
         </div>
     </div>
     <div class="rightside">
-            <div class="titre_categorie"> Mes infos perso </div>
-        <form method="post">
+        <div class="titre_categorie"> Mes infos perso </div>
+
+        <nav class="navbar navbar-expand-lg" style="background: transparent">
+            <a href="" class="nav-link">Mes coordonneés</a>
+            <a href="" class="nav-link">Changer mot de passe</a>
+        </nav>
+        <form method="post" class="">
             <div class="champ">
-                <input type="text" name="mail" class="infodata" placeholder="" value=""/>
-                <label for="mail" class="infolabel">Adresse Mail</label>
+                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
+                <label for="email" class="input_label">E-mail</label>
             </div>
+
             <div class="champ">
-                <input type="text" name="nom" class="infodata" placeholder="" value=""/>
-                <label for="nom" class="infolabel">Nom</label>
+                <input type="text" id="nom" name="nom" class="input_login" placeholder="" required>
+                <label for="nom" class="input_label">Nom</label>
             </div>
+
             <div class="champ">
-                <input type="text" name="prenom" class="infodata" placeholder="" value=""/>
-                <label for="prenom" class="infolabel">Prénom</label>
+                <input type="text" id="prenom" name="prenom" class="input_login" placeholder="" required>
+                <label for="prenom" class="input_label">Prénom</label>
             </div>
+
             <div class="champ">
-                <input type="number" name="tel" class="infodata" placeholder=""/>
-                <label for="tel" class="infolabel">Téléphone</label>
+                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
+                <label for="email" class="input_label">E-mail</label>
             </div>
+
             <div class="champ">
-                <div class="othertitle">Sexe</div>
-                <div class="genrebox">
-                    <div class="genreoption">
-                        <input class="genreradio" type="radio" name="genre_user" id="H" {% if (app.user.sexe == 'H') %} checked {% endif %}>
-                        <label class="genrelabel" for="H">Homme</label>
-                    </div>
-                    <div class="genreoption">
-                        <input class="genreradio" type="radio" name="genre_user" id="F" {% if (app.user.sexe == 'F') %} checked {% endif %}>
-                        <label class="genrelabel" for="F">Femme</label>
-                    </div>
-                </div>
+                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
+                <label for="email" class="input_label">E-mail</label>
             </div>
-            <div class="champ">
-                <div class="othertitle">Code postal</div>
-                <input type="number" minlength="5" maxlength="5" pattern="[0-9]+" class="codepostalinput" placeholder="00000">
-            </div>
-            <div class="champ">
-                <input type="text" name="addr" class="infodata" placeholder=""/>
-                <label for="addr" class="infolabel">Adresse</label>
-            </div>
-            <button class="submit">Enregistrer mes informations</button>
         </form>
-        <button class="chgmt_mdp" id="button_mdp">Changer de mot de passe</button>
-        <form class="changement_du_mdp">
+
+        <form class="" method="post">
             <div class="champ">
-                <input type="password" name="mdp1" class="mdpdata" placeholder=""/>
-                <label for="mdp1" class="mdplabel">Mot de passe actuel</label>
+                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
+                <label for="email" class="input_label">E-mail</label>
             </div>
             <div class="champ">
-                <input type="password" name="mdp3" class="mdpdata" placeholder=""/>
-                <label for="mdp2" class="mdplabel">Nouveau mot de passe</label>
+                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
+                <label for="email" class="input_label">E-mail</label>
             </div>
             <div class="champ">
-                <input type="password" name="mdp3" class="mdpdata" placeholder=""/>
-                <label for="mdp3" class="mdplabel">Confirmation nouveau mot de passe</label>
-            </div>
-            <div class="valid_cancel">
-                <button class="valid_mdp" id="button-newmdp"> Valider</button>
-                <button  class="cancel_mdp" id="button-nomdp">Annuler</button>
+                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
+                <label for="email" class="input_label">E-mail</label>
             </div>
         </form>
 

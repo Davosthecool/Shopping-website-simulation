@@ -28,13 +28,13 @@
                 <div class="choose">
                     {% for choice in registrationForm.sexe %}
                         <div>
-                            {{ form_widget(choice) }}
+                            {{ form_widget(choice, {'attr' : { 'class': ''} }) }}
                             {{ form_label(choice) }}
                         </div>
                     {% endfor %}
                 </div>
                 <div class="champ">
-                    {{ form_widget(registrationForm.email, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off'} }) }}
+                    {{ form_widget(registrationForm.email, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'new-email'} }) }}
                     <label for="email" class="input_label">E-mail</label>
                 </div>
                 <div class="champ">
@@ -46,16 +46,17 @@
                     <label for="prenom" class="input_label">Prénom</label>
                 </div>
                 <div class="champ">
-                    {{ form_widget(registrationForm.password.first, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off', 'required' : true} }) }}
+                    {{ form_widget(registrationForm.password.first, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'new-password', 'required' : true} }) }}
                     <label for="password1" class="input_label">Mot de passe</label>
                 </div>
                 <div class="champ">
-                    {{ form_widget(registrationForm.password.second, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off'} }) }}
+                    {{ form_widget(registrationForm.password.second, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'new-password'} }) }}
                     <label for="password2" class="input_label">Confirmer mot de passe</label>
                 </div>
-                {{ form_widget(registrationForm.submit, {'attr' : {'class' : 'envoyer', 'id' : 'envoyer', 'value' : "S'inscrire"} }) }}
+                <input type="submit" class="envoyer" value="S'inscrire" >
 
-                <a href='{{ path('app_login') }}' }}>S'inscrire</a>
+                <a href='{{ path('app_login') }}' }} class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                style="transition: .2s ease-in-out; font-size: 16px;">Se connecter</a>
                 {{ form_end(registrationForm) }}
             </div>
         </div>
