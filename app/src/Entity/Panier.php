@@ -128,4 +128,9 @@ class Panier
         return $this;
     }
 
+    public function viderContenu(): static{
+        $this->contenu->clear();
+        return $this;
+    }
+
 }

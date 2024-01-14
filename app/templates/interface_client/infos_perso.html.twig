@@ -8,7 +8,7 @@
 <div class="contenu">
     <div class="leftside">
         <div class="lefts">
-            <a> <div class="select"> Mes infos perso </div> </a>
+            <a href="/profil"> <div class="select"> Mes infos perso </div> </a>
             <a href="/profil/historique-commandes"> <div class="not_select"> Historique transactions </div> </a>
             <a href="/profil/bons-d-achat"> <div class="not_select"> Bons d'achat </div> </a>
             <a href="/profil/support-client"> <div class="not_select"> Support client </div> </a>
@@ -18,51 +18,48 @@
         <div class="titre_categorie"> Mes infos perso </div>
 
         <nav class="navbar navbar-expand-lg" style="background: transparent">
-            <a href="" class="nav-link">Mes coordonneés</a>
-            <a href="" class="nav-link">Changer mot de passe</a>
+            <a href="/profil" class="nav-link">Mes coordonneés</a>
+            <a href="/profil/changer-mot-de-passe" class="nav-link">Changer mot de passe</a>
         </nav>
-        <form method="post" class="">
+        {{ form_errors(profilForm) }}
+        {{ form_start(profilForm) }}
             <div class="champ">
-                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
+                {{ form_widget(profilForm.email, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'new-email'} }) }}
                 <label for="email" class="input_label">E-mail</label>
             </div>
 
-            <div class="champ">
-                <input type="text" id="nom" name="nom" class="input_login" placeholder="" required>
-                <label for="nom" class="input_label">Nom</label>
+            <div class="nom-prenom">
+                <div class="champ">
+                    {{ form_widget(profilForm.nom, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off', 'pattern' : '/^[a-zA-Zéèàôç\-\s]+$/u'} }) }}
+                    <label for="nom" class="input_label">Nom</label>
+                </div>
+                <div class="champ">
+                    {{ form_widget(profilForm.prenom, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off', 'pattern' : '/^[a-zA-Zéèàôç\-\s]+$/u'} }) }}
+                    <label for="prenom" class="input_label">Prénom</label>
+                </div>
             </div>
 
             <div class="champ">
-                <input type="text" id="prenom" name="prenom" class="input_login" placeholder="" required>
-                <label for="prenom" class="input_label">Prénom</label>
+                {{ form_widget(profilForm.adresse, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off'} }) }}
+                <label for="adresse" class="input_label">Adresse</label>
             </div>
 
             <div class="champ">
-                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
-                <label for="email" class="input_label">E-mail</label>
+                {{ form_widget(profilForm.tel, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off', 'pattern':'^[0-9]+$'} }) }}
+                <label for="tel" class="input_label">Numéro de téléphone</label>
             </div>
 
-            <div class="champ">
-                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
-                <label for="email" class="input_label">E-mail</label>
+            <div class="choose">
+                {% for choice in profilForm.sexe %}
+                    <div>
+                        {{ form_widget(choice, {'attr' : { 'class': 'form-check-input'} }) }}
+                        {{ form_label(choice) }}
+                    </div>
+                {% endfor %}
             </div>
-        </form>
 
-        <form class="" method="post">
-            <div class="champ">
-                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
-                <label for="email" class="input_label">E-mail</label>
-            </div>
-            <div class="champ">
-                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
-                <label for="email" class="input_label">E-mail</label>
-            </div>
-            <div class="champ">
-                <input type="email" id="email" name="email" class="input_login" placeholder="" required>
-                <label for="email" class="input_label">E-mail</label>
-            </div>
-        </form>
-
+            <input type="submit" class="btn btn-outline-danger valider" value="Enregistrer les informations">
+        {{ form_end(profilForm) }}
     </div>
 
 

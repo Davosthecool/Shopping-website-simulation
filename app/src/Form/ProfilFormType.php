@@ -59,6 +59,7 @@ class ProfilFormType extends AbstractType
             ])
             ->add('adresse')
             ->add('tel', TextType::class, [
+                'required'=>false,
                 'constraints'=> [
                     new Regex([
                         'pattern' => '/^\d+$/',

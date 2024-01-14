@@ -34,7 +34,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Email([
                         'message' => 'E-mail incorrect'
-                    ])
+                    ]),
                 ]
             ])
             ->add('nom', null,[
@@ -42,6 +42,10 @@ class RegistrationFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Veuillez saisir votre nom',
                     ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Zéèàôç\-\s]+$/u',
+                        'message' => 'Nom incorrecte (pas de caractères spécials)'
+                    ])
                 ]
             ])
             ->add('prenom', null,[
@@ -49,6 +53,10 @@ class RegistrationFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Veuillez saisir un prénom',
                     ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Zéèàôç\-\s]+$/u',
+                        'message' => 'Prénom incorrecte (pas de caractères spécials)'
+                    ])
                 ]
             ])
             ->add('sexe', ChoiceType::class,[

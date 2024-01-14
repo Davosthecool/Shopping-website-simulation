@@ -1,197 +1,111 @@
+/* Rightside */
+
+.rightside{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 20px 60px;
+    gap: 60px;
+}
+
+.rightside form{
+    position: relative;
+    width: 75%;
+    min-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: white;
+    padding: 60px 20px 60px 60px;
+}
+
+.rightside nav{
+    display: flex;
+    gap: 20px;
+    font-size: 24px;
+}
+
+.rightside nav a{
+    padding-bottom: 10px;
+    transition: .2s ease-in;
+}
+
+.rightside nav a:hover{
+    border-bottom: 1px solid black;
+}
+
+
 .titre_categorie{
-    color: white;
-    background-color:#3563E9 ;
-    font-size: 26px;
-    font-weight:bold;
-    padding: 40px;
-    margin-bottom: 80px;
-}
-
-.infotitle{
-    font-size: 25px;
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif;
+    font-size: 32px;
 }
 
 
-.chgmt_mdp {
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-bottom: 50px;
-    display: inline-block;
-    padding: 25px 22px;
-    font-size: 30px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    background-color: #3563E9;
-    color: white;
-    border-radius: 20px;
-}
-
-.chgmt_mdp:hover {
-    background-color: #0003E9;
-    color: #fff;
-}
-
+/* Profil - informations personnelles */
 .champ{
-    margin-top: 30px;
-    margin-left: 22px;
-    margin-bottom: 50px;
     position: relative;
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    width: 75%;
     line-height: 1.4    ;
 }
 
-
-.infolabel{
-    pointer-events: none;
+.input_login{
+    position: relative;
+    z-index: 1;
+    border: 0px;
+    border-bottom: 1px solid #d8d8d8;
+    padding: 7px 15px 2px 0px;
+    line-height: 2  ;
 }
 
-
-.infolabel{
-    font-size: 22px;
-    position: absolute;
-    top: 5px;
-    transition: .2s ease;
-}
-
-.infodata:focus{
+.input_login:focus{
     outline: none;
 }
 
-.infodata{
-    position: relative;
-    font-size: 30px;
-    font-family: 'Inter', sans-serif;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    border-bottom: black solid 2px;
-
-}
-
-
-.infodata:not(:placeholder-shown) + .infolabel,
-.infodata:focus-visible + .infolabel{
+.input_label{
+    font-size: 1.2em;
     position: absolute;
-    top: -20px;
-    font-size: 16px;
-}
-
-.chgmt_mdp:active{
-    background-color: #3563E9;
-}
-
-
-
-.mdplabel{
-    pointer-events: none;
-}
-
-
-.mdplabel{
-    font-size: 30px;
-    position: absolute;
+    z-index: 5;
     top: 5px;
+    color: #888888;
     transition: .2s ease;
 }
 
-.mdpdata:focus{
-    outline: none;
+.input_label{
+    pointer-events: none;
 }
 
-.mdpdata{
-    position: relative;
-    font-size: 30px;
-    font-family: 'Inter', sans-serif;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    border-bottom: white solid 2px;
-    caret-color: white;
-    color: white;
-}
-
-
-.mdpdata:not(:placeholder-shown) + .mdplabel,
-.mdpdata:focus-visible + .mdplabel{
+.input_login:not(:placeholder-shown) + .input_label,
+.input_login:focus-visible + .input_label{
     position: absolute;
-    top: -20px;
-    font-size: 20px;
+    top: -10px;
+    font-size: 1em;
+
 }
 
-
-
-.changement_du_mdp{
-    background-color: #3563E9;
-    color: white;
-    border-radius: 20px;
-    margin: 50px;
-    padding: 25px;
-    display: none;
-}
-
-.valid_cancel{
+.choose{
     display: flex;
-    justify-content: space-between;
+    gap: 64px;
 }
 
-.valid_mdp, .cancel_mdp, .submit{
-    font-size: 30px;
-    font-family: 'Inter', sans-serif;
-    background-color: white;
-    color: #3563E9;
-    padding: 10px;
-    border-radius: 20px;
+/* bouton */
+
+.valider{
+    margin-top:60px;
+    align-self: flex-start;
+    width: fit-content;
+    transition: .2s ease-in-out
 }
 
-.valid_mdp:hover, .cancel_mdp:hover, .submit:hover{
-    background-color: #0003E9;
-    color: white;
-}
+/* nom-prenom */
 
-.valid_mdp:active, .cancel_mdp:active, .submit:active{
-    background-color: white;
-    color: #3563E9;
-}
-
-.othertitle{
-    font-size: 30px;
-}
-
-
-.genrebox{
+.nom-prenom{
     display: flex;
-    width: 100%;
-    justify-content: start;
-    margin-bottom: 20px;
+    flex-direction: row;
+    gap: 2em;
+    width: 75%;
 }
 
-.genrelabel{
-    font-size: 25px;
+.nom-prenom .champ{
+    width: 50%;
 }
-
-.genreradio{
-    margin-left: 190px;
-}
-
-.codepostalinput{
-    border: none;
-    background-color: #3563E9;
-    color: white;
-    font-size: 25px;
-    padding-left: 25px;
-    width: 75px;
-    border-radius: 20px;
-    margin-left: 100px;
-}
-
-.codepostalinput::placeholder{
-    opacity: 1;
-}
-

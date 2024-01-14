@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href={{asset('/styles/infos_perso.css')}} type="text/css"><link rel="stylesheet" href="/styles/interface_utilisateur.css" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="contenu">
+    <div class="leftside">
+        <div class="lefts">
+            <a href="/profil"> <div class="select"> Mes infos perso </div> </a>
+            <a href="/profil/historique-commandes"> <div class="not_select"> Historique transactions </div> </a>
+            <a href="/profil/bons-d-achat"> <div class="not_select"> Bons d'achat </div> </a>
+            <a href="/profil/support-client"> <div class="not_select"> Support client </div> </a>
+        </div>
+    </div>
+    <div class="rightside">
+        <div class="titre_categorie"> Mes infos perso </div>
+
+        <nav class="navbar navbar-expand-lg" style="background: transparent">
+            <a href="/profil" class="nav-link">Mes coordonneés</a>
+            <a href="/profil/changer-mot-de-passe" class="nav-link">Changer mot de passe</a>
+        </nav>
+        {{ form_errors(changePassword) }}
+        {{ form_start(changePassword) }}
+            <div class="champ">
+                {{ form_widget(changePassword.oldPassword, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'required' : true, 'autocomplete' : 'new-password'} }) }}
+                <label for="password1" class="input_label">Ancien mot de passe</label>
+            </div>
+
+            <div class="champ">
+                {{ form_widget(changePassword.password.first, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'required' : true} }) }}
+                <label for="password1" class="input_label">Nouveau mot de passe</label>
+            </div>
+
+            <div class="champ">
+                {{ form_widget(changePassword.password.second, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'required' : true} }) }}
+                <label for="password2" class="input_label">Confirmer nouveau mot de passe</label>
+            </div>
+
+            <input type="submit" class="btn btn-outline-danger valider" value="Changer mot de passe">
+        {{ form_end(changePassword) }}
+
+    </div>
+
+
+</div>
+
+<script src="{{ asset("infos_perso.js") }}" ></script>
+{% endblock %}

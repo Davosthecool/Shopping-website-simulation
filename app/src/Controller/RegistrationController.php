@@ -26,10 +26,8 @@ class   RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-            $message = $this->verifierChamps($user);
-            if (!$form->isValid() || $message != ""){
-                $this->addFlash('error', 'Vérifiez si votre nom ou prénom ne compore pas de caractères spéciales (lettres spécials exclus et "-" exclus) tel que la ponctution ou de chiffre . 
-                8 caractères minimum pour le mot de passe et il doit bien être réécrit dans le champ confirmer mot de passe');
+            if (!$form->isValid()){
+                $this->addFlash('error', 'Un ou plusieurs champs sont invalides. Vérifier ');
                 return $this->render('connexion/register.html.twig', [
                     'registrationForm' => $form->createView(),
                 ]);
@@ -41,6 +39,10 @@ class   RegistrationController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
+
+            $user->setEmail(trim($user->getEmail()));
+            $user->setNom(trim($user->getNom()));
+            $user->setPrenom(trim($user->getPrenom()));
 
             $entityManager->persist($user);
             $entityManager->flush();
