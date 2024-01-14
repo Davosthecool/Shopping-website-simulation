@@ -3,11 +3,10 @@
 namespace App\Controller;
 use App\Entity\Exemplaire;
 use App\Form\AddProduitType;
+use App\Form\ResearchType;
 use App\Repository\ArticleRepository;
 use App\Repository\ExemplaireRepository;
-use App\Repository\PanierRepository;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,19 +20,29 @@ class ProduitController extends AbstractController
     #[Route('/produit/{produit_id}', name: 'app_produit', requirements: ['produit_id'=>'\d+'])]
     public function index(int $produit_id, ArticleRepository $Arep, ExemplaireRepository $Erep, UserRepository $Urep, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $produit = $Arep->find($produit_id);
-        $form = $this->createForm(AddProduitType::class, new Exemplaire(), ['produit' => $produit]);
-        $form->handleRequest($request);
+        $researchForm = $this->createForm(ResearchType::class);
+        $researchForm->handleRequest($request);
+        if ($researchForm->isSubmitted() && $researchForm->isValid()) {
+            return $this->render('accueil.html.twig', [
+                'articles' => $Arep->findByNomContains(explode(' ',$researchForm->get('recherche')->getData() )),
+                'researchForm' => $researchForm
+            ]);
+        }
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $produit = $Arep->find($produit_id);
+        $addProduitForm = $this->createForm(AddProduitType::class, new Exemplaire(), ['produit' => $produit]);
+        $addProduitForm->handleRequest($request);
+        
+        if ($addProduitForm->isSubmitted() && $addProduitForm->isValid()) {
 
             $session = $request->getSession();
 
-            $exemplaire = $Erep->findOneBy(['taille' => $form->get('taille')->getData(), 'couleur' => $form->get('couleur')->getData(), 'panier' => null]);
+            $exemplaire = $Erep->findOneBy(['taille' => $addProduitForm->get('taille')->getData(), 'couleur' => $addProduitForm->get('couleur')->getData(), 'panier' => null]);
             if ($exemplaire == null){
                 return $this->render('produit.html.twig', [
                     'produit' => $produit,
-                    'addproduitForm' => $form->createView(),
+                    'addproduitForm' => $addProduitForm->createView(),
+                    'researchForm' => $researchForm
                 ]);
             }
 
@@ -47,7 +56,8 @@ class ProduitController extends AbstractController
 
                 return $this->render('produit.html.twig', [
                     'produit' => $produit,
-                    'addproduitForm' => $form->createView(),
+                    'addproduitForm' => $addProduitForm->createView(),
+                    'researchForm' => $researchForm
                 ]);
             }else{
                 return $this->redirectToRoute('app_login');
@@ -56,7 +66,8 @@ class ProduitController extends AbstractController
         }
         return $this->render('produit.html.twig', [
             'produit' => $produit,
-            'addproduitForm' => $form->createView(),
+            'addproduitForm' => $addProduitForm->createView(),
+            'researchForm' => $researchForm
         ]);
     }
 }

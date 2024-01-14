@@ -18,7 +18,7 @@
 
             </div>
             <div class="bloc" id="icones">
-                <a href="/profil"><img src="/icones/profil.png" alt="icone profil"></a>
+                <a href="{{ path("app_profil") }}"><img src="/icones/profil.png" alt="icone profil"></a>
                 <a href=""><img src="/icones/favoris.png" alt="icone favoris"></a>
                 <a href="{{ path("app_panier") }}"><img src="/icones/panier.png" alt="icone panier"></a>
                 {% if (app.user) %}
@@ -41,6 +41,13 @@
                 <div id="barre">
                     <a href="" target="_blank" rel="noopener noreferrer">Enfants</a>
                 </div>
+            </div>
+
+            <div class="search-box">
+                {{ form_start(researchForm) }}
+                {{ form_widget(researchForm.recherche, {'attr' : {'class' : 'search-txt', 'placeholder' : 'Tapez pour rechercher' }}) }}
+                {{ form_widget(researchForm.submit, {'attr' : {'class' : 'search-btn'}} ) }}
+                {{ form_end(researchForm) }}
             </div>
 
         </div>
