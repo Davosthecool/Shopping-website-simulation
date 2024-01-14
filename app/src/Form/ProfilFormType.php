@@ -57,7 +57,9 @@ class ProfilFormType extends AbstractType
                 'data' => 'H',
                 'expanded' => true,
             ])
-            ->add('adresse')
+            ->add('adresse', TextType::class, [
+                'required' => false,
+            ])
             ->add('tel', TextType::class, [
                 'required'=>false,
                 'constraints'=> [
@@ -78,7 +80,6 @@ class ProfilFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
         ]);
     }
 }

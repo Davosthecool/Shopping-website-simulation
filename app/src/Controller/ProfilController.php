@@ -24,19 +24,33 @@ class ProfilController extends AbstractController
         if (!$this->getUser())
             return $this->redirectToRoute('app_login');
         $user = $entityManager->getRepository(User::class)->find($this->getUser());
-        $form = $this->createForm(ProfilFormType::class, $user);
+        $form = $this->createForm(ProfilFormType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted()){
             if (!$form->isValid()){
                 $this->addFlash('error', 'Un ou plusieurs champs sont invalides.');
-                return $this->render('connexion/register.html.twig', [
-                    'registrationForm' => $form->createView(),
+                return $this->render('interface_client/infos_perso.html.twig', [
+                    'profilForm' => $form->createView(),
                 ]);
             }
+            $email = trim($form->get("email")->getData());
+            $nom = trim($form->get("nom")->getData());
+            $prenom = trim($form->get("prenom")->getData());
+            $adresse = trim($form->get("adresse")->getData());
+            $tel = trim($form->get("tel")->getData());
 
-            $user->setEmail(trim($user->getEmail()));
-            $user->setNom(trim($user->getNom()));
-            $user->setPrenom(trim($user->getPrenom()));
+            switch (true){
+                case $email != $user->getEmail():
+                    $user->setEmail($email);
+                case $nom != $user->getNom():
+                    $user->setNom($nom);
+                case $prenom != $user->getPrenom():
+                    $user->setPrenom($prenom);
+                case $adresse != $user->getAdresse():
+                    $user->setAdresse($adresse);
+                case $tel != $user->getTel():
+                    $user->setTel($tel);
+            }
 
             $entityManager->flush();
             $this->addFlash("success","Changement effectué");

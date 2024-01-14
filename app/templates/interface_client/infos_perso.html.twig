@@ -24,28 +24,28 @@
         {{ form_errors(profilForm) }}
         {{ form_start(profilForm) }}
             <div class="champ">
-                {{ form_widget(profilForm.email, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'new-email'} }) }}
+                {{ form_widget(profilForm.email, {'attr' : {'value': app.user.email ,'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'new-email'} }) }}
                 <label for="email" class="input_label">E-mail</label>
             </div>
 
             <div class="nom-prenom">
                 <div class="champ">
-                    {{ form_widget(profilForm.nom, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off', 'pattern' : '/^[a-zA-Zéèàôç\-\s]+$/u'} }) }}
+                    {{ form_widget(profilForm.nom, {'attr' : { 'value': app.user.nom ,'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off', 'pattern' : '/^[a-zA-Zéèàôç\-\s]+$/u'} }) }}
                     <label for="nom" class="input_label">Nom</label>
                 </div>
                 <div class="champ">
-                    {{ form_widget(profilForm.prenom, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off', 'pattern' : '/^[a-zA-Zéèàôç\-\s]+$/u'} }) }}
+                    {{ form_widget(profilForm.prenom, {'attr' : {'value': app.user.prenom  ,'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off', 'pattern' : '/^[a-zA-Zéèàôç\-\s]+$/u'} }) }}
                     <label for="prenom" class="input_label">Prénom</label>
                 </div>
             </div>
 
             <div class="champ">
-                {{ form_widget(profilForm.adresse, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off'} }) }}
+                {{ form_widget(profilForm.adresse, {'attr' : {'value': app.user.adresse ,'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off'} }) }}
                 <label for="adresse" class="input_label">Adresse</label>
             </div>
 
             <div class="champ">
-                {{ form_widget(profilForm.tel, {'attr' : {'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off', 'pattern':'^[0-9]+$'} }) }}
+                {{ form_widget(profilForm.tel, {'attr' : {'value': app.user.tel,'class' : 'input_login', 'placeholder' : '', 'autocomplete' : 'off', 'pattern':'^[0-9]+$'} }) }}
                 <label for="tel" class="input_label">Numéro de téléphone</label>
             </div>
 
