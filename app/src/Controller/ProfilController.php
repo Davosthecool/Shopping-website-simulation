@@ -17,8 +17,8 @@ class ProfilController extends AbstractController
 
 
 
-    #[Route('/profil', name:'app_infos_profil')]
-    #[Route('/profil/infos', name: 'app_infos_profil2')]
+    #[Route('/profil', name:'app_profil')]
+    #[Route('/profil/infos', name: 'app_infos_profil')]
     public function infos_perso(Request $request,  EntityManagerInterface $entityManager): Response
     {
         if (!$this->getUser())
