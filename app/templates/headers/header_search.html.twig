@@ -22,6 +22,8 @@
                 <a href="{{ path("app_favoris") }}"><img src="/icones/favoris.png" alt="icone favoris"></a>                <a href="{{ path("app_panier") }}"><img src="/icones/panier.png" alt="icone panier"></a>
                 {% if (app.user) %}
                     <a href="{{ path("app_logout") }}" class="btn btn-outline-danger logout">Se deconnecter</a>
+                {% else %}
+                    <a href="{{ path("app_login") }}" class="btn btn-outline-primary login">Se connecter</a>
                 {% endif %}
             </div>
         </div>
