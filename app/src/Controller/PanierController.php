@@ -50,6 +50,7 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('app_acceuil');
         }
         $panier->viderContenu();
+        $entityManager->
         $entityManager->flush();
         return $this->redirectToRoute("app_panier");
     }
@@ -64,6 +65,7 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('app_acceuil');
         }
         $panier->viderContenu();
+        $entityManager->persist($panier);
         $entityManager->flush();
         return $this->render('panier/index.html.twig', [
             "panier" => $panier->getContenu(),
@@ -80,6 +82,7 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('app_accueil');
         }
         $panier->viderContenu();
+        $entityManager->persist($panier);
         $entityManager->flush();
         $this->addFlash("success","Achat réussi");
         return $this->redirectToRoute('app_accueil');
