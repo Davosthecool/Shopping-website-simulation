@@ -87,7 +87,7 @@ class PanierController extends AbstractController
         $entityManager->persist($panier);
         $entityManager->flush();
         $this->addFlash("success","Achat réussi");
-        return $this->redirectToRoute('app_accueil');
+        return $this->redirectToRoute('app_accueil', [""]);
     }
 
 
