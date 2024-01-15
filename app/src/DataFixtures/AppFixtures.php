@@ -22,7 +22,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         // Remplissage de la BD avec des Articles aléatoires
-        $sexes=['M','F','N'];
+        $cibles=['H','F','E','O'];
         for ($i=0; $i<10; $i++){
             $product = new Article();
             $product->setNom($this->faker->words(4,true))
@@ -30,8 +30,7 @@ class AppFixtures extends Fixture
                 ->setTailles([])
                 ->setCouleurs([])
                 ->setTags([])
-                ->setSexe($sexes[mt_rand(0,count($sexes)-1)])
-                ->setCategorie(null)
+                ->setCible($cibles[mt_rand(0,count($cibles)-1)])
                 ->setMarque(null)
                 ->setImage('image5.png');
 

@@ -31,9 +31,8 @@ class Article
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private array $tags = []; #Tag
 
-    private ?string $sexe = null;
-
-    private ?string $categorie = null;
+    #[ORM\Column(nullable: true)]
+    private ?string $cible = null;
 
     #[ORM\OneToMany(mappedBy: 'type', targetEntity: Exemplaire::class, orphanRemoval: true)]
     private Collection $exemplaires;
@@ -153,26 +152,14 @@ class Article
         return $this;
     }
 
-    public function getSexe()
+    public function getCible()
     {
-        return $this->sexe;
+        return $this->cible;
     }
 
-    public function setSexe($sexe)
+    public function setCible($cible)
     {
-        $this->sexe = $sexe;
-
-        return $this;
-    }
-
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
-
-    public function setCategorie($categorie)
-    {
-        $this->categorie = $categorie;
+        $this->cible = $cible;
 
         return $this;
     }

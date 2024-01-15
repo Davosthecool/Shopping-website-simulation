@@ -4,7 +4,7 @@
             <div class="prix"> {{ article.prix }} €</div>
              <button href="{{ path('accueil_add_favoris', {'article_id' : article.id}) }}" id="heart" class="favoris_article"></button>
         </div>
-        <img class="image_article" src="images/{{ article.image }}">
+        <img class="image_article" src={{ asset("images/" ~ article.image )}}>
         <div class="desc_article"> {{ article.nom }} </div>
     </div>
 </a>

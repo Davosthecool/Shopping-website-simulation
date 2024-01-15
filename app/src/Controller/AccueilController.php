@@ -53,4 +53,23 @@ class AccueilController extends AbstractController
         }
         return $this->redirectToRoute('app_accueil');
     }
+    
+    #[Route('/accueil/{cible}', name: 'app_accueil_cible')]
+    public function indexByCategorie(string $cible, ArticleRepository $articleRepository, Request $request): Response
+    {
+        $researchForm = $this->createForm(ResearchType::class);
+        $researchForm->handleRequest($request);
+        if ($researchForm->isSubmitted() && $researchForm->isValid()) {
+            return $this->render('accueil.html.twig', [
+                'articles' => $articleRepository->findByNomContains(explode(' ',$researchForm->get('recherche')->getData() )),
+                'researchForm' => $researchForm
+            ]);
+        }
+
+        return $this->render('accueil.html.twig', [
+            'articles' => $articleRepository->findByCible($cible),
+            'researchForm' => $researchForm
+        ]);
+    }
+
 }

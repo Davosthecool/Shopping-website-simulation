@@ -43,7 +43,7 @@ class AdminAddArticleType extends AbstractType
                     ])
                 ]
             ])
-            ->add('sexe', ChoiceType::class,[
+            ->add('cible', ChoiceType::class,[
                 'placeholder' => 'Choisissez une cible',
                 'choices' => [
                     'Homme' => 'H',

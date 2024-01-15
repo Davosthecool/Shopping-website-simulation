@@ -15,8 +15,8 @@
             {{ form_label(addProduitForm.prix,'Prix :') }}
             {{ form_widget(addProduitForm.prix, {'attr' : {'name' : 'prix'}}) }}
 
-            {{ form_label(addProduitForm.sexe,'Cible :') }}
-            {{ form_widget(addProduitForm.sexe, {'attr' : {'name' : 'sexe'}}) }}
+            {{ form_label(addProduitForm.cible,'Cible :') }}
+            {{ form_widget(addProduitForm.cible, {'attr' : {'name' : 'cible'}}) }}
 
             {{ form_label(addProduitForm.image,"Nom de l'image :") }}
             {{ form_widget(addProduitForm.image, {'attr' : {'name' : 'image'}}) }}
@@ -31,7 +31,7 @@
                 <p>Nom : {{ article.nom }}</p>
                 <p>Marque : {{ article.marque }}</p>
                 <p>Prix : {{ article.prix }} $</p>
-                <p>Cible : {{ article.sexe }}</p>
+                <p>Cible : {{ article.cible }}</p>
                 <p>Categorie : {{ article.categorie }}</p>
                 <a href={{ path('app_admin_article_remove', {'article_id' : article.id}) }} class="btn btn-warning">Supprimer</a>
             </div>  
