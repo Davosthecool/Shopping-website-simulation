@@ -50,9 +50,7 @@ class PanierController extends AbstractController
         if ($panier->getNbArticles() == 0){
             return $this->redirectToRoute('app_acceuil');
         }
-        $panier->viderToutContenu();
-        $entityManager->persist($panier);
-        $entityManager->flush();
+        $this->removeAllElements($entityManager, $panier);
         return $this->redirectToRoute("app_panier");
     }
 
@@ -83,12 +81,19 @@ class PanierController extends AbstractController
         if ($panier->getNbArticles() == 0){
             return $this->redirectToRoute('app_accueil');
         }
-        $panier->viderToutContenu();
-        $entityManager->persist($panier);
-        $entityManager->flush();
+        $this->removeAllElements($entityManager, $panier);
         $this->addFlash("success","Achat réussi");
         return $this->redirectToRoute('app_accueil', [""]);
     }
 
 
+    private function removeAllElements(EntityManagerInterface $entityManager, Panier $panier)
+    {
+        $contenu = $panier->getContenu();
+        foreach( $contenu as $exemplaire){
+            $panier->removeContenu($exemplaire);
+        }
+        $entityManager->persist($panier);
+        $entityManager->flush();
+    }
 }
