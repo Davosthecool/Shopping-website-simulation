@@ -19,7 +19,7 @@
             </div>
             <div class="bloc" id="icones">
                 <a href="/profil"><img src="/icones/profil.png" alt="icone profil"></a>
-                <a href=""><img src="/icones/favoris.png" alt="icone favoris"></a>
+                <a href="{{ path("app_favoris") }}"><img src="/icones/favoris.png" alt="icone favoris"></a>
                 <a href="{{ path("app_panier") }}"><img src="/icones/panier.png" alt="icone panier"></a>
                 {% if (app.user) %}
                     <a href="{{ path("app_logout") }}" class="btn btn-outline-danger logout">Se deconnecter</a>

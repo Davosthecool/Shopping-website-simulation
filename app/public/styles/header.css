@@ -3,6 +3,7 @@ body{
   flex-wrap: wrap;
   flex-shrink: 200;
   color:var(--couleursecondaire);
+
 }
 
 .header{
@@ -11,6 +12,7 @@ body{
     box-shadow: 0px 0px 20px rgb(160, 160, 160);
     z-index: 2;
     position: relative;
+    background-color: white;
 }
 #titre{
     text-align: center;
@@ -159,7 +161,7 @@ transition: width 0.3s ease; /* Transition de la largeur avec un délai de 0.3s 
 /* Barre du bas pendant le survol */
 #barre:hover::before,
 #barre:hover::after {
-  width: 7%; /* Largeur de la barre pendant le survol (50% pour une barre centrée) */
+  width: 6%; /* Largeur de la barre pendant le survol (50% pour une barre centrée) */
 }
 
 .logout{

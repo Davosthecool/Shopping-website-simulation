@@ -8,6 +8,8 @@
 
 }
 .article{
+    color:var(--couleursecondaire);
+    text-decoration:none;
     display: flex;
     box-sizing: border-box;
     width: calc(18%);
@@ -53,6 +55,8 @@
     align-items: center;
 }
 .favoris_article{
+    border:none;
+    background: none;
     width: 53px;
     height: 53px;
     background-image: url('../icones/heart.svg');
@@ -61,7 +65,7 @@
     transition: all 0.5s;
 }
 .favoris_article:hover{
-    transform:scale(1) ;
+    transform:scale(1.1) ;
 }
 .favoris_article.clicked{
     background-image: url('../icones/heartfilled.svg');
