@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Amp\Http\Client\Request;
+use App\Entity\Exemplaire;
 use App\Entity\Panier;
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -49,8 +50,8 @@ class PanierController extends AbstractController
         if ($panier->getNbArticles() == 0){
             return $this->redirectToRoute('app_acceuil');
         }
-        $panier->viderContenu();
-        $entityManager->
+        $panier->viderToutContenu();
+        $entityManager->persist($panier);
         $entityManager->flush();
         return $this->redirectToRoute("app_panier");
     }
@@ -64,7 +65,8 @@ class PanierController extends AbstractController
         if ($panier->getNbArticles() == 0){
             return $this->redirectToRoute('app_acceuil');
         }
-        $panier->viderContenu();
+        $exemplaire = $entityManager->getRepository(Exemplaire::class)->find($produit_id);
+        $panier->removeContenu($exemplaire);
         $entityManager->persist($panier);
         $entityManager->flush();
         return $this->render('panier/index.html.twig', [
@@ -81,7 +83,7 @@ class PanierController extends AbstractController
         if ($panier->getNbArticles() == 0){
             return $this->redirectToRoute('app_accueil');
         }
-        $panier->viderContenu();
+        $panier->viderToutContenu();
         $entityManager->persist($panier);
         $entityManager->flush();
         $this->addFlash("success","Achat réussi");
