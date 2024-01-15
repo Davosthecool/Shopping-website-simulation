@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use Amp\Http\Client\Request;
 use App\Entity\Panier;
+use App\Entity\User;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,12 +41,49 @@ class PanierController extends AbstractController
 
 
     #[Route('/panier/vider', name:'app_vider_panier')]
-    public function viderPanier(Request $request, UserRepository $userRepository): Response
+    public function viderPanier(EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser() == null)
             return $this->redirectToRoute('app_accueil');
-        $panier = $userRepository->find($this->getUser())->getPanier();
+        $panier = $entityManager->getRepository(User::class)->find($this->getUser())->getPanier();
+        if ($panier->getNbArticles() == 0){
+            return $this->redirectToRoute('app_acceuil');
+        }
         $panier->viderContenu();
+        $entityManager->flush();
         return $this->redirectToRoute("app_panier");
     }
+
+    #[Route('/panier/retirer/{produit_id}', name:'app_retire_article', requirements: ['produit_id'=>'\d+'])]
+    public function retirerArticle(int $produit_id, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->getUser() == null)
+            return $this->redirectToRoute('app_accueil');
+        $panier = $entityManager->getRepository(User::class)->find($this->getUser())->getPanier();
+        if ($panier->getNbArticles() == 0){
+            return $this->redirectToRoute('app_acceuil');
+        }
+        $panier->viderContenu();
+        $entityManager->flush();
+        return $this->render('panier/index.html.twig', [
+            "panier" => $panier->getContenu(),
+        ]);
+    }
+
+    #[Route('/panier/valider-panier', name:'app_valider_panier')]
+    public function validerPanier(EntityManagerInterface $entityManager):Response
+    {
+        if ($this->getUser() == null)
+            return $this->redirectToRoute('app_accueil');
+        $panier = $entityManager->getRepository(User::class)->find($this->getUser())->getPanier();
+        if ($panier->getNbArticles() == 0){
+            return $this->redirectToRoute('app_accueil');
+        }
+        $panier->viderContenu();
+        $entityManager->flush();
+        $this->addFlash("success","Achat réussi");
+        return $this->redirectToRoute('app_accueil');
+    }
+
+
 }

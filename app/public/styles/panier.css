@@ -80,3 +80,17 @@ main{
 .option-quantite *{
     grid-row: 1;
 }
+
+.principale-footer{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    justify-content: space-between;
+}
+
+.vide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
