@@ -9,9 +9,7 @@
     <main>
         <div class="principale">
         <div class="container">
-            <div class="produit-images">
-                <img src= "{{ asset('images/' ~ produit.image) }}" alt= "{{produit.image}}">
-            </div>
+            <img class="produit-images" src= "{{ asset('images/' ~ produit.image) }}" alt= "{{produit.image}}">
             <div class="produit-options">
                     {{ form_errors(addproduitForm) }}
                     {{ form_start(addproduitForm, {'attr' : {'class' : 'form-options'} }) }}

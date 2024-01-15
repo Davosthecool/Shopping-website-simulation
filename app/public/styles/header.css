@@ -86,7 +86,7 @@ span:nth-child(1) {
     font: var(--nom-categories);
     text-decoration: none;
     color: var(--couleursecondaire);
-    font-size: 20px;
+    font-size: 1.2vw;
 }
 
 .flow-link{

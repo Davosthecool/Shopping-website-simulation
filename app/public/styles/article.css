@@ -5,11 +5,12 @@
     flex-wrap: wrap;
     justify-content: space-around;
     gap:30px;
+
 }
 .article{
     display: flex;
     box-sizing: border-box;
-    width: calc(20%);
+    width: calc(18%);
     background-color: white;
     aspect-ratio: 414/512;
     border-radius: 10px;
@@ -17,6 +18,8 @@
     border:1px solid white;
     box-shadow: 0px 0px 5px rgb(160, 160, 160);
     padding: 20px;
+    min-height:265px;
+    min-width:215px;
 }
 .article:hover{
     border: solid 1px black;
