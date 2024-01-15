@@ -6,7 +6,6 @@ body{
 }
 
 .header{
-    background-color: var(--globalback);
     display: flex;
     width: 100%;
     box-shadow: 0px 0px 20px rgb(160, 160, 160);
