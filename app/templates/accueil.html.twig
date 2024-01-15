@@ -11,11 +11,24 @@
 
 {% block content %}
 <div id="content">
-    <div id="solde">
-        <div class="boxfleche"><a class="fleche"></a></div>
-        <div id="boxsolde">SOLDES</div>
-        <div class="boxfleche"><a class="fleche" id="flechedroite"></a></div>
+    <div class="container" id="new1">
+        <div class="boxfleche"><a class="flechegauche" id="1"></a></div>
+        <div id="box_new">SOLDES</div>
+        <div class="boxfleche"><a class="flechedroite" id="2"></a></div>
     </div>
+
+    <div class="container" id="new2">
+            <div class="boxfleche"><a class="flechegauche" id="3"></a></div>
+            <div id="box_new">Nouveau produit</div>
+            <div class="boxfleche"><a class="flechedroite" id="4"></a></div>
+    </div>
+
+    <div class="container" id="new3">
+                <div class="boxfleche"><a class="flechegauche" id="5"></a></div>
+                <div id="box_new">Wow</div>
+                <div class="boxfleche"><a class="flechedroite" id="6"></a></div>
+        </div>
+
     <div id="articles">
         {% for article in articles%}
         {% include asset('article.html.twig')%}
@@ -24,13 +37,14 @@
        
     </div>
 </div>
+<script src="{{ asset("accueil.js") }}" ></script>
 {% endblock %}
 
 {% block scripts%}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var heartElements = document.getElementsByClassName('favoris_article');
-    
+
         for (var i = 0; i < heartElements.length; i++) {
             heartElements[i].addEventListener('click', function() {
                 this.classList.toggle('clicked');

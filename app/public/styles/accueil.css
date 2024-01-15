@@ -5,9 +5,9 @@
     flex-direction: column;
 
 }
-#solde{
+.container{
     display: flex;
-
+    max-width: 100%;
     margin: 50px 0 0 3% ;
     width: 94%;
     height: 300px;
@@ -19,7 +19,7 @@
     font-family: "Unica77-LL-TT",Helvetica,Arial,sans-serif;
 
 }
-#boxsolde{
+#box_new{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@
     justify-content: center;
     width: 15%;
 }
-.fleche{
+.flechedroite, .flechegauche{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,6 +41,11 @@
     width: 50%;
     background-image: url(../icones/fleche.png);
 }
-#flechedroite{
+.flechedroite{
     transform: rotateY(180deg);
 }
+
+.container:not(#new1){
+    display: none;
+}
+
