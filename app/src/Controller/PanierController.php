@@ -56,7 +56,7 @@ class PanierController extends AbstractController
         return $this->redirectToRoute("app_panier");
     }
 
-    #[Route('/panier/retirer/{produit_id}', name:'app_retire_article', requirements: ['produit_id'=>'\d+'])]
+    #[Route('/panier/retirer/{produit_id}', name:'app_retirer_article', requirements: ['produit_id'=>'\d+'])]
     public function retirerArticle(int $produit_id, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser() == null)
