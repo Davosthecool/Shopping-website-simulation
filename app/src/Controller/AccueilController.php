@@ -20,8 +20,16 @@ class AccueilController extends AbstractController
         $researchForm = $this->createForm(ResearchType::class);
         $researchForm->handleRequest($request);
         if ($researchForm->isSubmitted() && $researchForm->isValid()) {
+            $recherche = explode(' ',$researchForm->get('recherche')->getData());
+
+            foreach ([...$articleRepository->findByNomContains($recherche),...$articleRepository->findByTags($recherche)] as $entity) {
+                $id = $entity->getId(); // Remplacez par la méthode qui retourne l'identifiant unique de votre entité
+                if (!isset($uniqueEntities[$id])) {
+                    $articles[$id] = $entity;
+                }
+            }
             return $this->render('accueil.html.twig', [
-                'articles' => $articleRepository->findByNomContains(explode(' ',$researchForm->get('recherche')->getData() )),
+                'articles' => $articles,
                 'researchForm' => $researchForm
             ]);
         }
@@ -54,7 +62,7 @@ class AccueilController extends AbstractController
         return $this->redirectToRoute('app_accueil');
     }
     
-    #[Route('/accueil/{cible}', name: 'app_accueil_cible')]
+    #[Route('/accueil/cible/{cible}', name: 'app_accueil_cible')]
     public function indexByCategorie(string $cible, ArticleRepository $articleRepository, Request $request): Response
     {
         $researchForm = $this->createForm(ResearchType::class);
@@ -68,6 +76,24 @@ class AccueilController extends AbstractController
 
         return $this->render('accueil.html.twig', [
             'articles' => $articleRepository->findByCible($cible),
+            'researchForm' => $researchForm
+        ]);
+    }
+
+    #[Route('/accueil/tag/{tag}', name: 'app_accueil_tag')]
+    public function indexByTag(string $tag, ArticleRepository $articleRepository, Request $request): Response
+    {
+        $researchForm = $this->createForm(ResearchType::class);
+        $researchForm->handleRequest($request);
+        if ($researchForm->isSubmitted() && $researchForm->isValid()) {
+            return $this->render('accueil.html.twig', [
+                'articles' => $articleRepository->findByNomContains(explode(' ',$researchForm->get('recherche')->getData() )),
+                'researchForm' => $researchForm
+            ]);
+        }
+
+        return $this->render('accueil.html.twig', [
+            'articles' => $articleRepository->findByTags([$tag]),
             'researchForm' => $researchForm
         ]);
     }

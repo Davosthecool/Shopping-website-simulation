@@ -32,7 +32,6 @@
                 <p>Marque : {{ article.marque }}</p>
                 <p>Prix : {{ article.prix }} $</p>
                 <p>Cible : {{ article.cible }}</p>
-                <p>Categorie : {{ article.categorie }}</p>
                 <a href={{ path('app_admin_article_remove', {'article_id' : article.id}) }} class="btn btn-warning">Supprimer</a>
             </div>  
             {% endfor %}   

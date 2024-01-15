@@ -44,11 +44,11 @@ class ArticleRepository extends ServiceEntityRepository
      /**
     * @return Article[] Returns an array of Article objects
     */
-   public function findByCible($value): array
+   public function findByTags($values): array
    {
        return $this->createQueryBuilder('a')
-           ->andWhere('a.cible = :val')
-           ->setParameter('val', $value)
+           ->andWhere('a.tags LIKE :values')
+           ->setParameter('values', '%' . implode('%', $values) . '%')
            ->orderBy('a.nom', 'ASC')
            ->getQuery()
            ->getResult()
