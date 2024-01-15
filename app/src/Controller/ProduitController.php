@@ -47,7 +47,7 @@ class ProduitController extends AbstractController
             $user = $this->getUser();
             if ($user!=null){
                 $panier = $Urep->find($user)->getPanier();
-                $panier->
+                $panier->addContenu($exemplaire);
 
                 $entityManager->persist($panier);
                 $entityManager->flush();

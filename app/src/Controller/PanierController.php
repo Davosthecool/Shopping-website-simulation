@@ -63,7 +63,7 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('app_accueil');
         $panier = $entityManager->getRepository(User::class)->find($this->getUser())->getPanier();
         if ($panier->getNbArticles() == 0){
-            return $this->redirectToRoute('app_acceuil');
+            return $this->redirectToRoute('app_accueil');
         }
         $exemplaire = $entityManager->getRepository(Exemplaire::class)->find($produit_id);
         $panier->removeContenu($exemplaire);
