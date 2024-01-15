@@ -30,7 +30,9 @@
     align-items: center;
     justify-content: center;
     width: 15%;
+
 }
+
 .flechedroite, .flechegauche{
     display: flex;
     align-items: center;
@@ -40,9 +42,15 @@
     aspect-ratio: 1/1;
     width: 50%;
     background-image: url(../icones/fleche.png);
+    transition:all 0.5s;
+    cursor:pointer;
 }
 .flechedroite{
-    transform: rotateY(180deg);
+    background-image: url(../icones/fleche1.png);
+}
+
+.flechedroite:hover, .flechegauche:hover{
+    transform:scale(1.1);
 }
 
 .container:not(#new1){
