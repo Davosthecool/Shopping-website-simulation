@@ -128,8 +128,8 @@ class Panier
         return $this;
     }
 
-    public function viderContenu(): static{
-        $this->contenu->clear();
+    public function viderToutContenu(): static{
+        $this->contenu = new ArrayCollection();
         return $this;
     }
 

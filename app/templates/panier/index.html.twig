@@ -11,6 +11,7 @@
             <h3>Mon panier</h3>
         </div>
         <div class="principale-main">
+            {% if (panier|length > 0) %}
             <div class="product-list">
                 {% for produit in panier%}
                     <div  class="produit">
@@ -32,17 +33,24 @@
                                 <a href="" class="btn btn-outline-primary disabled">-</a>
                             </div>
                             <div class="option-retirer">
-                                <a href="" class="btn btn-warning">Retirer</a>
+                                <a href="{{ path("app_retirer_article", {"produit_id" : produit.id})}}" class="btn btn-warning">Retirer</a>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
+
+            <div class="principale-footer">
+                <a href="{{ path("app_valider_panier") }}" class="btn btn-success">Valider le panier</a>
+                <a href="{{ path("app_vider_panier", ) }}" class="btn btn-danger">Vider le panier</a>
+            </div>
+            {% else %}
+            <div class="vide">
+                <h3>C'est vide :'(</h3>
+            </div>
+            {% endif %}
         </div>
-        <div class="principale-footer">
-            <a href="" class="btn btn-danger">Vider le panier</a>
-            <a href="" class="btn btn-check">Valider le panier</a>
-        </div>
+
     </div>
 </main>
 {% endblock %}

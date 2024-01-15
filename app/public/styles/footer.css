@@ -21,3 +21,6 @@ footer{
 .footer-section a{
     color: white;
 }
+.footer-section a:hover{
+    color: #89A7FF;
+}
