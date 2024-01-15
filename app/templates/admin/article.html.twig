@@ -1,0 +1,41 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block gestion %}
+    <div class="gestion">
+        <h1>Gestion articles</h1>
+
+        {{ form_errors(addProduitForm) }}
+        {{ form_start(addProduitForm, {'attr' : {'id' : 'form-article'}}) }}
+            {{ form_label(addProduitForm.nom,'Nom :') }}
+            {{ form_widget(addProduitForm.nom, {'attr' : {'name' : 'nom'}}) }}
+
+            {{ form_label(addProduitForm.marque,'Marque :') }}
+            {{ form_widget(addProduitForm.marque, {'attr' : {'name' : 'marque'}}) }}
+
+            {{ form_label(addProduitForm.prix,'Prix :') }}
+            {{ form_widget(addProduitForm.prix, {'attr' : {'name' : 'prix'}}) }}
+
+            {{ form_label(addProduitForm.sexe,'Cible :') }}
+            {{ form_widget(addProduitForm.sexe, {'attr' : {'name' : 'sexe'}}) }}
+
+            {{ form_label(addProduitForm.image,"Nom de l'image :") }}
+            {{ form_widget(addProduitForm.image, {'attr' : {'name' : 'image'}}) }}
+
+            {{ form_widget(addProduitForm.submit) }}
+        {{ form_end(addProduitForm) }}
+
+        <div class="list">
+            {% for article in articles %}
+            <div  class="item">
+                <img src= {{ asset('images/' ~ article.image) }} alt= {{ article.image }}>
+                <p>Nom : {{ article.nom }}</p>
+                <p>Marque : {{ article.marque }}</p>
+                <p>Prix : {{ article.prix }} $</p>
+                <p>Cible : {{ article.sexe }}</p>
+                <p>Categorie : {{ article.categorie }}</p>
+                <a href={{ path('app_admin_article_remove', {'article_id' : article.id}) }} class="btn btn-warning">Supprimer</a>
+            </div>  
+            {% endfor %}   
+        </div>
+    </div>
+{% endblock %}

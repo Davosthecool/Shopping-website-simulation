@@ -33,7 +33,7 @@ class AppFixtures extends Fixture
                 ->setSexe($sexes[mt_rand(0,count($sexes)-1)])
                 ->setCategorie(null)
                 ->setMarque(null)
-                ->setImage('image 5.png');
+                ->setImage('image5.png');
 
 
             $manager->persist($product);

@@ -35,8 +35,6 @@ class ProduitController extends AbstractController
         
         if ($addProduitForm->isSubmitted() && $addProduitForm->isValid()) {
 
-            $session = $request->getSession();
-
             $exemplaire = $Erep->findOneBy(['taille' => $addProduitForm->get('taille')->getData(), 'couleur' => $addProduitForm->get('couleur')->getData(), 'panier' => null]);
             if ($exemplaire == null){
                 return $this->render('produit.html.twig', [
