@@ -1,0 +1,138 @@
+#content{
+    display: flex;
+    flex-direction: column;
+    margin:30px;
+    gap:50px;
+}
+#favoris{
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+}
+#articles{
+    display: flex;
+    margin: 30px;
+    row-gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap:30px;
+}
+#text_fav{
+    font-size: 3vw;
+}
+.article_fav{
+    color:var(--couleursecondaire);
+    text-decoration:none;
+    display: flex;
+    box-sizing: border-box;
+    width: calc(38%);
+    background-color: white;
+    aspect-ratio: 890/550;    /*   */
+    border-radius: 10px;
+    transition:all cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    border:1px solid white;
+    box-shadow: 0px 0px 5px rgb(160, 160, 160);
+    padding: 20px;
+    min-height:265px;
+    min-width:215px;
+}
+.article_fav:hover{
+    border: solid 1px black;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgb(160, 160, 160);
+}
+
+.partie_article{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height:100%;
+    align-items: center;
+}
+
+.desc_et_fav{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: space-between;
+    min-height: 53px;
+    align-items: center;
+
+}
+.desc_article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    text-align: center;
+}
+.favoris_article{
+    border:none;
+    background: none;
+    width: 53px;
+    height: 53px;
+    background-image: url('../icones/heart.svg');
+    background-size: cover;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.favoris_article:hover{
+    transform:scale(1.1) ;
+}
+.favoris_article.clicked{
+    background-image: url('../icones/heartfilled.svg');
+    animation: pulse 0.5s ease-in-out;
+    transition: all 0.5s;
+}
+@keyframes pulse {
+    50% {
+        transform: scale(0.7);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.img_prix_btn{
+    display: flex;
+    height: 70%;
+    width: 100%;
+}
+.image_article{
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
+    aspect-ratio: 950/970;
+}
+.bloc_prix{
+    display: flex;
+    width: 70%;
+    justify-content: end;
+    align-items: end;
+    padding-bottom:20px;
+}
+.prix{
+    background-color:var(--couleurprincipalefondu);
+    height: 30px;
+    width: 80px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bloc_ajouter{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    align-items: end;
+    justify-content: end;
+}
+.ajouter_btn{
+    display: flex;
+    height: 100%;
+    width: 40%;
+    border-radius: 20px;
+    border:1px solid black;
+    justify-content:center;
+    align-items:center;
+}

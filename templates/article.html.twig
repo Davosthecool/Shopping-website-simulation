@@ -1,10 +1,13 @@
-<a class="article" href= "{{ path('app_produit', {'produit_id' : article.id}) }}">
-    <div class="partie_article" >
-        <div class="prix_favoris">
-            <div class="prix"> {{ article.prix }} €</div>
-             <button href="{{ path('accueil_add_favoris', {'article_id' : article.id}) }}" id="heart" class="favoris_article"></button>
+<div class="article" >
+    <a class="lien" href= "{{ path('app_produit', {'produit_id' : article.id}) }}">
+        <div class="partie_article" >
+            <div class="prix_favoris">
+                <div class="prix"> {{ article.prix }} €</div>
+            </div>
+            <img class="image_article" src={{ asset("images/" ~ article.image )}}>
+            <div class="desc_article"> {{ article.nom }} </div>
         </div>
-        <img class="image_article" src={{ asset("images/" ~ article.image )}}>
-        <div class="desc_article"> {{ article.nom }} </div>
-    </div>
-</a>
+    </a>
+    <button onclick="redirectToPage('{{ path('accueil_add_favoris', {'article_id' : article.id}) }}')" id="heart" class="favoris_article"></button>
+
+</div>
