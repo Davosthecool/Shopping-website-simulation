@@ -65,7 +65,7 @@ class AppFixtures extends Fixture
         ->setPassword(
             $this->userPasswordHasher->hashPassword(
                 $user,
-                securedpassword
+                'securedpassword'
             )
         )
         ->setRoles(['admin'])
