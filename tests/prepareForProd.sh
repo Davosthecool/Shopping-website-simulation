@@ -3,7 +3,7 @@ git pull
 cd  ..
 sudo chmod 777 -R Flow/
 cd Flow/
-./init.sh
+./test/init.sh
 php composer.phar dump-env prod
 php composer.phar dump-autoload -o --no-dev
 echo "[OK] Ready for prod"
