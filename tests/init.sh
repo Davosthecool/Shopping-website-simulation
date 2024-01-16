@@ -1,11 +1,11 @@
 #installation initiale nécessaire
-composer install;
+php composer.phar update;
 sudo service mariadb start;
 
 #suppression de potentielles versions anciennes
 symfony console doctrine:database:drop --force;
-rm migrations/*;
-
+rm -r migrations
+mkdir migrations
 #creation de la base de données
 symfony console doctrine:database:create;
 symfony console make:migration;
