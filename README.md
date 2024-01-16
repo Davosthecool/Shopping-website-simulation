@@ -13,6 +13,9 @@ Le SGBD utilisé est mariadb il possède pour l'instant un user : login=admin pa
 
 Lien vers le google drive : https://docs.google.com/document/d/1tPmKocQxH4bKT6cpVneKpG9Sw1pR8x_hG3ldjQbS648/edit
 
+Pour accéder à la vm faire : ssh root|user@172.26.82.23
+ensuite aller dans /var/www/html
+et executer ./tests/prepareForProd.sh
 
 
 ## R3.03 | Analyse
