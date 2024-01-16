@@ -10,6 +10,12 @@
 {% endblock %}
 
 {% block content %}
+{% if (app.user) %}
+    {% if 'admin' in user.roles %} 
+        <a href="{{ path("app_admin") }}" class="btn btn-outline-primary login">Page admin</a>
+    {% endif %}
+{% endif %} 
+
 <div id="content">
     <div class="container" id="new1">
         <div class="boxfleche"><a class="flechegauche" id="1"></a></div>
@@ -30,9 +36,13 @@
         </div>
 
     <div id="articles">
-        {% for article in articles%}
-        {% include asset('article.html.twig')%}
-        {% endfor %}
+        {% if articles|length==0 %}
+            <h1> Aucun résultat :/ </h1>
+        {% else %}
+            {% for article in articles%}
+                {% include asset('article.html.twig')%}
+            {% endfor %}
+        {% endif %}
         
        
     </div>

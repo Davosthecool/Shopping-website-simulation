@@ -15,8 +15,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccueilController extends AbstractController
 {
     #[Route('/accueil', name: 'app_accueil')]
-    public function index(ArticleRepository $articleRepository, Request $request): Response
+    public function index(ArticleRepository $articleRepository, UserRepository $userRepository, Request $request): Response
     {
+        $user = $this->getUser();
+        if ($user!=null){
+            $user = $userRepository->find($user);
+        }
         $researchForm = $this->createForm(ResearchType::class);
         $researchForm->handleRequest($request);
         if ($researchForm->isSubmitted() && $researchForm->isValid()) {
@@ -28,15 +32,27 @@ class AccueilController extends AbstractController
                     $articles[$id] = $entity;
                 }
             }
+
+            if (isset($articles)){
+                return $this->render('accueil.html.twig', [
+                    'articles' => $articles,
+                    'researchForm' => $researchForm,
+                    'user' => $user
+                ]);
+            }
+
             return $this->render('accueil.html.twig', [
-                'articles' => $articles,
-                'researchForm' => $researchForm
+                'articles' => array(),
+                'researchForm' => $researchForm,
+                'user' => $user
             ]);
+
         }
 
         return $this->render('accueil.html.twig', [
             'articles' => $articleRepository->findAll(),
-            'researchForm' => $researchForm
+            'researchForm' => $researchForm,
+            'user' => $user
         ]);
     }
 
