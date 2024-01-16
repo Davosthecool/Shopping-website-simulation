@@ -20,6 +20,9 @@ class AccueilController extends AbstractController
         $user = $this->getUser();
         if ($user!=null){
             $user = $userRepository->find($user);
+            $favoris = $userRepository->find($this->getUser())->getFavoris();
+        }else{
+            $favoris = null;
         }
         $researchForm = $this->createForm(ResearchType::class);
         $researchForm->handleRequest($request);
@@ -37,35 +40,27 @@ class AccueilController extends AbstractController
                 return $this->render('accueil.html.twig', [
                     'articles' => $articles,
                     'researchForm' => $researchForm,
-                    'user' => $userRepository->find($this->getUser()),
-                    'favoris'=> $userRepository->find($this->getUser())->getFavoris()
+                    'user' => $user,
+                    'favoris'=> $favoris
                 ]);
             }
 
             return $this->render('accueil.html.twig', [
                 'articles' => array(),
                 'researchForm' => $researchForm,
-                'user' => $userRepository->find($this->getUser()),
-                'favoris'=> $userRepository->find($this->getUser())->getFavoris()
+                'user' => $user,
+                'favoris'=> $favoris
             ]);
 
         }
-        $user = $this->getUser();
-        if ($user!=null){
+        
             return $this->render('accueil.html.twig', [
                 'articles' => $articleRepository->findAll(),
                 'researchForm' => $researchForm,
-                'user' => $userRepository->find($this->getUser()),
+                'user' => $user,
                 'favoris'=> $userRepository->find($this->getUser())->getFavoris()
             ]);
-        }else{
-            return $this->render('accueil.html.twig', [
-                'articles' => $articleRepository->findAll(),
-                'researchForm' => $researchForm,
-                'user' => null,
-                'favoris'=> null
-            ]);
-        }
+        
     }
 
     #[Route('/', name: 'app_accueil_redirect')]
@@ -96,6 +91,9 @@ class AccueilController extends AbstractController
         $user = $this->getUser();
         if ($user!=null){
             $user = $userRepository->find($user);
+            $favoris = $userRepository->find($this->getUser())->getFavoris();
+        }else{
+            $favoris = null;
         }
         $researchForm = $this->createForm(ResearchType::class);
         $researchForm->handleRequest($request);
@@ -103,16 +101,16 @@ class AccueilController extends AbstractController
             return $this->render('accueil.html.twig', [
                 'articles' => $articleRepository->findByNomContains(explode(' ',$researchForm->get('recherche')->getData() )),
                 'researchForm' => $researchForm,
-                'user' => $userRepository->find($this->getUser()),
-                'favoris'=> $userRepository->find($this->getUser())->getFavoris()
+                'user' => $user,
+                'favoris'=> $favoris
             ]);
         }
 
         return $this->render('accueil.html.twig', [
             'articles' => $articleRepository->findByCible($cible),
             'researchForm' => $researchForm,
-            'user' => $userRepository->find($this->getUser()),
-            'favoris'=> $userRepository->find($this->getUser())->getFavoris()
+            'user' => $user,
+            'favoris'=> $favoris
         ]);
     }
 
@@ -120,23 +118,29 @@ class AccueilController extends AbstractController
     public function indexByTag(string $tag,UserRepository $userRepository, ArticleRepository $articleRepository, Request $request): Response
     {
         
-        
+        $user = $this->getUser();
+        if ($user!=null){
+            $user = $userRepository->find($user);
+            $favoris = $userRepository->find($this->getUser())->getFavoris();
+        }else{
+            $favoris = null;
+        }
         $researchForm = $this->createForm(ResearchType::class);
         $researchForm->handleRequest($request);
         if ($researchForm->isSubmitted() && $researchForm->isValid()) {
             return $this->render('accueil.html.twig', [
                 'articles' => $articleRepository->findByNomContains(explode(' ',$researchForm->get('recherche')->getData() )),
                 'researchForm' => $researchForm,
-                'user' => $userRepository->find($this->getUser()),
-                'favoris'=> $userRepository->find($this->getUser())->getFavoris()
+                'user' => $user,
+                'favoris'=> $favoris
             ]);
         }
 
         return $this->render('accueil.html.twig', [
             'articles' => $articleRepository->findByTags([$tag]),
             'researchForm' => $researchForm,
-            'user' => $userRepository->find($this->getUser()),
-            'favoris'=> $userRepository->find($this->getUser())->getFavoris()
+            'user' => $user,
+            'favoris'=> $favoris
         ]);
     }
 
