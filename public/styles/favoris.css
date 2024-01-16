@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     gap:50px;
+    min-height:300px;
 }
 #articles{
     display: flex;
