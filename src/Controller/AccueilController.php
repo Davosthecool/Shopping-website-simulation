@@ -58,7 +58,7 @@ class AccueilController extends AbstractController
                 'articles' => $articleRepository->findAll(),
                 'researchForm' => $researchForm,
                 'user' => $user,
-                'favoris'=> $userRepository->find($this->getUser())->getFavoris()
+                'favoris'=> $favoris
             ]);
         
     }
