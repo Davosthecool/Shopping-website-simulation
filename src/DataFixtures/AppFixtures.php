@@ -59,18 +59,18 @@ class AppFixtures extends Fixture
 
         //ajout admin
         $user = new User();
-        $user->setEmail('dada@gmail.com')
-        ->setNom('Beaufort')
-        ->setPrenom('Bertrand')
+        $user->setEmail('admin@172.26.82.23')
+        ->setNom('admin')
+        ->setPrenom('admin')
         ->setPassword(
             $this->userPasswordHasher->hashPassword(
                 $user,
-                123456789
+                securedpassword
             )
         )
         ->setRoles(['admin'])
         ->setSexe('H')
-        ->setAdresse('6 tamara street')
+        ->setAdresse('IUT Nantes')
         ->setTel(6666666666);
 
         $manager->persist($user);
