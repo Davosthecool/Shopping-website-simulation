@@ -1,13 +1,24 @@
-app/migrations/Version20240112113634.php
-app/migrations/Version20240112153155.php
-.gitignore
-app/migrations/Version20240112183326.php
-app/migrations/Version20240112184014.php
-app/migrations/Version20240112193546.php
-app/migrations/Version20240113135815.php
-app/migrations/Version20240113222700.php
-.gitignore
-app/migrations/Version20240115112921.php
-app/migrations/Version20240115161205.php
-app/migrations/Version20240115173502.php
-app/migrations/Version20240116083559.php
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor
+###< symfony/asset-mapper ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
