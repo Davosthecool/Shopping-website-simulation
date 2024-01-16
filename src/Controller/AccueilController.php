@@ -119,10 +119,8 @@ class AccueilController extends AbstractController
     #[Route('/accueil/tag/{tag}', name: 'app_accueil_tag')]
     public function indexByTag(string $tag,UserRepository $userRepository, ArticleRepository $articleRepository, Request $request): Response
     {
-        $user = $this->getUser();
-        if ($user!=null){
-            $user = $userRepository->find($user);
-        }
+        
+        
         $researchForm = $this->createForm(ResearchType::class);
         $researchForm->handleRequest($request);
         if ($researchForm->isSubmitted() && $researchForm->isValid()) {
