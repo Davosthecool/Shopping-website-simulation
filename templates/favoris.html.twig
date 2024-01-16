@@ -13,10 +13,14 @@
 
     <div id="text_fav">Favoris</div>
     <div id="favoris">
+            {% if favoris|length==0 %}
+                <h1> Vous n'avez pas encore de favoris :/ </h1>
+            {% else %}
         <div id="articles">
             {% for article in favoris%}
             {% include asset('article_favoris.html.twig')%}
             {% endfor %}
+            {% endif %}
         </div>
     </div>
 
@@ -33,6 +37,8 @@
                 this.classList.toggle('clicked');
             });
         }});
-
+    function redirectToPage(url) {
+            window.location.href = url;
+    }
 </script>
 {% endblock %}

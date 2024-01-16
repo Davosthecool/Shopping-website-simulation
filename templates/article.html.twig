@@ -8,6 +8,8 @@
             <div class="desc_article"> {{ article.nom }} </div>
         </div>
     </a>
-    <button onclick="redirectToPage('{{ path('accueil_add_favoris', {'article_id' : article.id}) }}')" id="heart" class="favoris_article"></button>
+    {% if favoris %} <button onclick="redirectToPage('{{ path('accueil_add_favoris', {'article_id' : article.id}) }}')" id="heart" class="favoris_article{% if article in favoris %} clicked{% endif %}"></button>
+    {% else %} <button onclick="redirectToPage('{{ path('accueil_add_favoris', {'article_id' : article.id}) }}')" id="heart" class="favoris_article"></button>
+    {% endif %}
 
 </div>

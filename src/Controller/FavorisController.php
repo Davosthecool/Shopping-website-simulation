@@ -35,4 +35,8 @@ class FavorisController extends AbstractController
             "favoris" => $favoris,
         ]);
     }
+    public function hasFavori(Article $article): bool
+        {
+            return $this->favoris->contains($article);
+        }
 }
