@@ -1,7 +1,7 @@
 # SAE - La liste de recettes
 
 ### Equipe de projet : eq_02_03
-#### membres de l'équipe : AHMADA Ibrahim, CHOCHO David, FREMONT Tom et MARY Bastian ( Le con du groupe)
+#### membres de l'équipe : AHMADA Ibrahim, CHOCHO David, FREMONT Tom et MARY Bastian ( Le nom du groupe)
 
 Connection/Inscription : permet de se connecter / de créer un compte, permet de se déconnecter
 
