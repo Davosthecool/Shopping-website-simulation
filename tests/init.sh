@@ -1,6 +1,7 @@
 #installation initiale nécessaire
 php composer.phar update;
 sudo service mariadb start;
+service apache2 start;
 
 #suppression de potentielles versions anciennes
 #symfony console doctrine:database:drop --force;
