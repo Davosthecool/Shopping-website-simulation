@@ -4,7 +4,7 @@
             <div class="prix_favoris">
                 <div class="prix"> {{ article.prix }} €</div>
             </div>
-            <img class="image_article" src={{ asset("images/" ~ article.image )}}>
+            <img class="image_article" src="/images/{{ article.image }}">
             <div class="desc_article"> {{ article.nom }} </div>
         </div>
     </a>

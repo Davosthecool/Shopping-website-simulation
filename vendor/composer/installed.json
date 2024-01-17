@@ -12068,7 +12068,6 @@
         "sebastian/version",
         "symfony/browser-kit",
         "symfony/css-selector",
-        "symfony/debug-bundle",
         "symfony/dom-crawler",
         "symfony/maker-bundle",
         "symfony/phpunit-bridge",

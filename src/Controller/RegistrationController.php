@@ -26,6 +26,13 @@ class   RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
+            $existing_user_check = $entityManager->getRepository(User::class)->findOneBy(['email'=> $user->getEmail()]);
+            if ($existing_user_check){
+                $this->addFlash('error', 'Cet e-mail est déjà utilisé.');
+                return $this->render('connexion/register.html.twig', [
+                    'registrationForm' => $form->createView(),
+                ]);
+            }
             if (!$form->isValid()){
                 $this->addFlash('error', 'Un ou plusieurs champs sont invalides. Vérifier ');
                 return $this->render('connexion/register.html.twig', [

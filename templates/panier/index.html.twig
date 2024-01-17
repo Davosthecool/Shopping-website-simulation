@@ -27,11 +27,12 @@
                             <p>Prix : {{ produit.getType().getPrix()}} $</p>
                         </div>
                         <div class="produit-options">
-                            <div class="option-quantite">
-                                <a href="" class="btn btn-primary disabled">+</a>
-                                <p>1</p>
-                                <a href="" class="btn btn-outline-primary disabled">-</a>
-                            </div>
+
+                            {# <div class="option-quantite"> #}
+                            {#    <a href="" class="btn btn-primary disabled">+</a> #}
+                            {# <p>1</p> #}
+                            {# <a href="" class="btn btn-outline-primary disabled">-</a>#}
+                            {# </div> #}
                             <div class="option-retirer">
                                 <a href="{{ path("app_retirer_article", {"produit_id" : produit.id})}}" class="btn btn-warning">Retirer</a>
                             </div>
