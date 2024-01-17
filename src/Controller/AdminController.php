@@ -29,10 +29,10 @@ class AdminController extends AbstractController
         $this->uRep = $uRep;
     }
     #[Route('/admin', name: 'app_admin')]
-    public function index(): Response
+        public function index(): Response
     {
         $user = $this->uRep->find($this->getUser());
-        if ($user==null|| !in_array('ROLE_ADMIN',$user->getRoles()) ){
+        if ($user==null|| !in_array('admin',$user->getRoles()) ){
             return $this->redirectToRoute('app_accueil');
         }
 
@@ -45,7 +45,7 @@ class AdminController extends AbstractController
     public function user(UserRepository $uRep, Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $user = $this->uRep->find($this->getUser());
-        if ($user==null|| !in_array('ROLE_ADMIN',$user->getRoles()) ){
+        if ($user==null|| !in_array('admin',$user->getRoles()) ){
             return $this->redirectToRoute('app_accueil');
         }
 
@@ -77,7 +77,7 @@ class AdminController extends AbstractController
     public function userDelete(int $user_id, UserRepository $uRep, EntityManagerInterface $entityManager): Response
     {
         $user = $this->uRep->find($this->getUser());
-        if ($user==null|| !in_array('ROLE_ADMIN',$user->getRoles()) ){
+        if ($user==null|| !in_array('admin',$user->getRoles()) ){
             return $this->redirectToRoute('app_accueil');
         }
 
@@ -92,7 +92,7 @@ class AdminController extends AbstractController
     public function article(ArticleRepository $aRep, Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->uRep->find($this->getUser());
-        if ($user==null|| !in_array('ROLE_ADMIN',$user->getRoles()) ){
+        if ($user==null|| !in_array('admin',$user->getRoles()) ){
             return $this->redirectToRoute('app_accueil');
         }
 
@@ -113,7 +113,7 @@ class AdminController extends AbstractController
     public function articleDelete(int $article_id, ArticleRepository $aRep, EntityManagerInterface $entityManager): Response
     {
         $user = $this->uRep->find($this->getUser());
-        if ($user==null|| !in_array('ROLE_ADMIN',$user->getRoles()) ){
+        if ($user==null|| !in_array('admin',$user->getRoles()) ){
             return $this->redirectToRoute('app_accueil');
         }
 
@@ -128,7 +128,7 @@ class AdminController extends AbstractController
     public function exemplaire(ExemplaireRepository $eRep, EntityManagerInterface $entityManager, Request $request): Response
     {
         $user = $this->uRep->find($this->getUser());
-        if ($user==null|| !in_array('ROLE_ADMIN',$user->getRoles()) ){
+        if ($user==null|| !in_array('admin',$user->getRoles()) ){
             return $this->redirectToRoute('app_accueil');
         }
 
@@ -148,7 +148,7 @@ class AdminController extends AbstractController
     public function exemplaireDelete(int $exemplaire_id, ExemplaireRepository $eRep, EntityManagerInterface $entityManager): Response
     {
         $user = $this->uRep->find($this->getUser());
-        if ($user==null|| !in_array('ROLE_ADMIN',$user->getRoles()) ){
+        if ($user==null|| !in_array('admin',$user->getRoles()) ){
             return $this->redirectToRoute('app_accueil');
         }
         

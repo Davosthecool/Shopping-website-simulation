@@ -32,7 +32,7 @@
 
         <div class="list">
                 {% for user in users %}
-                    {% if ("ROLE_USER" in user.roles || "user" in user.roles) %}
+                    {% if ( "user" in user.roles) %}
                 <div  class="item">
                     <p>Email : {{ user.email }} </p>
                     <p>Nom : {{ user.nom }} </p>
