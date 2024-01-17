@@ -32,7 +32,9 @@ class AdminController extends AbstractController
     public function index(): Response
     {
         $user = $this->uRep->find($this->getUser());
-
+        if ($user==null|| !in_array('ROLE_ADMIN',$user->getRoles()) ){
+            return $this->redirectToRoute('app_accueil');
+        }
 
         return $this->render('admin/index.html.twig', [
 
