@@ -37,6 +37,7 @@ class ProduitController extends AbstractController
 
             $exemplaire = $Erep->findOneBy(['taille' => $addProduitForm->get('taille')->getData(), 'couleur' => $addProduitForm->get('couleur')->getData(), 'panier' => null]);
             if ($exemplaire == null){
+                $this->addFlash('error', "ce produit n'est pas disponible avec cette taille et couleur");
                 return $this->render('produit.html.twig', [
                     'produit' => $produit,
                     'addproduitForm' => $addProduitForm->createView(),
@@ -52,6 +53,7 @@ class ProduitController extends AbstractController
                 $entityManager->persist($panier);
                 $entityManager->flush();
 
+                $this->addFlash('success', 'Produit ajouté au panier avec succès');
                 return $this->render('produit.html.twig', [
                     'produit' => $produit,
                     'addproduitForm' => $addProduitForm->createView(),
