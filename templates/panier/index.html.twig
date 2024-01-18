@@ -19,10 +19,10 @@
                             <img src="/images/{{ produit.getType().getImage() }}" alt="">
                         </div>
                         <div class="produit-nom">
-                            <p>Mon produit</p>
+                            <p>{{ produit.getType().getNom() }}</p>
                         </div>
                         <div class="produit-informations">
-                            {#<p>Quantite : {{ produit.getQuantite() }}</p>#}
+                            <p>Taille : {{ produit.getTaille() }}</p>
                             <p>Couleur : {{ produit.getCouleur() }}</p>
                             <p>Prix : {{ produit.getType().getPrix()}} $</p>
                         </div>

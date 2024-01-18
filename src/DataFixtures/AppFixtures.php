@@ -68,7 +68,7 @@ class AppFixtures extends Fixture
                 'securedpassword'
             )
         )
-        ->setRoles(['admin'])
+        ->setRoles(['ROLE_ADMIN'])
         ->setSexe('H')
         ->setAdresse('IUT Nantes')
         ->setTel(6666666666);

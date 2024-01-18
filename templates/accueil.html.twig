@@ -11,7 +11,7 @@
 
 {% block content %}
 {% if (app.user) %}
-    {% if 'admin' in user.roles %}
+    {% if 'ROLE_ADMIN' in user.roles %}
         <a href="{{ path("app_admin") }}" class="btn btn-outline-primary login">Page admin</a>
     {% endif %}
 {% endif %} 

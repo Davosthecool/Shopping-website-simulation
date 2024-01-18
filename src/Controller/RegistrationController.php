@@ -39,7 +39,7 @@ class   RegistrationController extends AbstractController
                     'registrationForm' => $form->createView(),
                 ]);
             }
-            $user->setRoles(array("user"));
+            $user->setRoles(array("ROLE_USER"));
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
