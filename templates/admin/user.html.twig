@@ -33,12 +33,12 @@
         <div class="list">
                 {% for user in users %}
                     {% if ( "ROLE_USER" in user.roles) %}
-                <div  class="item">
-                    <p>Email : {{ user.email }} </p>
-                    <p>Nom : {{ user.nom }} </p>
-                    <p>Prénom : {{ user.prenom }} </p>
-                    <a href={{ path('app_admin_user_remove', {'user_id' : user.id}) }} class="btn btn-warning">Supprimer</a>
-                </div>
+                        <div  class="item">
+                            <p>Email : {{ user.email }} </p>
+                            <p>Nom : {{ user.nom }} </p>
+                            <p>Prénom : {{ user.prenom }} </p>
+                            <a href={{ path('app_admin_user_remove', {'user_id' : user.id}) }} class="btn btn-warning">Supprimer</a>
+                        </div>
                     {% endif %}
                 {% endfor %}
                 
