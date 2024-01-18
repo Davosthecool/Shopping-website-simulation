@@ -24,7 +24,7 @@
                         <div class="produit-informations">
                             <p>Taille : {{ produit.getTaille() }}</p>
                             <p>Couleur : {{ produit.getCouleur() }}</p>
-                            <p>Prix : {{ produit.getType().getPrix()}} $</p>
+                            <p>Prix : {{ produit.getType().getPrix()}} €</p>
                         </div>
                         <div class="produit-options">
 
@@ -42,8 +42,8 @@
             </div>
 
             <div class="principale-footer">
-                <a href="{{ path("app_valider_panier") }}" class="btn btn-success">Valider le panier</a>
                 <a href="{{ path("app_vider_panier", ) }}" class="btn btn-danger">Vider le panier</a>
+                <a href="{{ path("app_valider_panier") }}" class="btn btn-success">Valider le panier</a>
             </div>
             {% else %}
             <div class="vide">
